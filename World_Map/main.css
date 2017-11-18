@@ -19,3 +19,7 @@ div.tooltip {
       opacity: 0.9;
       position: absolute;
 }
+
+.textfield {
+	font-size: 15pt;
+}
