@@ -1,5 +1,7 @@
 const width = 1300;
 const height = 1000;
+const width_map = width * 80 / 100;
+const height_map = height;
 
 // D3 Projection
 const projection = d3.geoNaturalEarth1()
@@ -10,20 +12,22 @@ d3.select(window).on("resize", sizeChange);
 // path generator to convert JSON to SVG paths
 let path = d3.geoPath().projection(projection);
 
-
-var svg = d3.select("#container")
+let svg = d3.select("#container")
 	.append("svg")
 	.attr("width", "100%")
-		.append("g");
+	.attr("height", "100%")
+	.append("g");
 
-//colormap for population density
+let selectedCountry = d3.select(null);
+
+//colormap for rating average
 const color = d3.scaleLog()
 	.range(["hsl(62,100%,90%)", "hsl(228,30%,20%)"])
 	.interpolate(d3.interpolateHcl);
 
 
 // Append Div for tooltip to SVG
-var div = d3.select("body")
+let div = d3.select("body")
     .append("div")
 	.attr("class", "tooltip")
 	.style("opacity", 0);
@@ -58,7 +62,7 @@ d3.json("../Data/world-map.json", function(json) {
 		const fullDict = csvToBeerDict(data);
 		console.log(fullDict);
 		//Draw map & show tooltip with name when mouse over country
-		var map_window = svg.selectAll("path")
+		var map_window = d3.select("g").selectAll("path")
 			.data(countries.features)
 			.enter()
 			.append("path")
@@ -85,6 +89,22 @@ d3.json("../Data/world-map.json", function(json) {
 				document.getElementById("information").style.display = "block";
 				document.getElementById("countryName").innerHTML = "Country: " +  d.name;
 				document.getElementById("averageScore").innerHTML =  "Average Score: " + fullDict["avgDict"][d.name];
+
+				if (selectedCountry.node() === this) return zoomOutOnClick();
+			  	selectedCountry.classed("active", false);
+			  	selectedCountry = d3.select(this).classed("active", true);
+
+				let limits = path.bounds(d),
+			      	dx = limits[1][0] - limits[0][0],
+			      	dy = limits[1][1] - limits[0][1],
+			      	x = (limits[0][0] + limits[1][0]) / 2,
+			      	y = (limits[0][1] + limits[1][1]) / 2,
+			      	scale = Math.max(1, Math.min(4, 0.9 / Math.max(dx / width_map, dy / height_map))),
+			      	translate = [width_map / 2 - scale * x, height_map / 2 - scale * y];
+
+			  	svg.transition()
+			    	.duration(750)
+			      	.call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) );
 			});
 	});
 
@@ -152,7 +172,27 @@ function csvToBeerDict(data) {
 	return dictWithAvg;
 };
 
+//Rescale when window size changes
 function sizeChange() {
 	d3.select("g").attr("transform", "scale(" + $("#container").width()/900 + ")");
-	$("svg").height($("#container").width()*0.618);
+	$("svg").height($("#container").width()*0.6);
 };
+
+// Zooming
+var zoom = d3.zoom()
+    .scaleExtent([1, 8])
+    .on("zoom", zooming);
+svg.call(zoom);
+
+function zooming() {
+	d3.select("g").attr("transform", d3.event.transform); // updated for d3 v4
+};
+
+function zoomOutOnClick() {
+	selectedCountry.classed("active", false);
+	selectedCountry = d3.select(null);
+
+	svg.transition()
+		.duration(750)
+		.call( zoom.transform, d3.zoomIdentity ); // updated for d3 v4
+}
