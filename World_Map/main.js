@@ -1,7 +1,10 @@
-const width = 1300;
-const height = 1000;
+const width = 1000;
+const height = 900;
 const width_map = width * 80 / 100;
 const height_map = height;
+
+// Select Box name
+const select_box = ["Score", "Alcool %", "Calory"];
 
 // D3 Projection
 const projection = d3.geoNaturalEarth1()
@@ -11,6 +14,19 @@ d3.select(window).on("resize", sizeChange);
 
 // path generator to convert JSON to SVG paths
 let path = d3.geoPath().projection(projection);
+
+// Create select box
+var select = d3.select('#container')
+  	.append('select')
+	.attr('class','select')
+    .on('change',changeMap);
+var options = select
+	.selectAll('option')
+	.data(select_box)
+	.enter()
+	.append('option')
+	.text(function (d) { return d; });
+let selectedMap = d3.select('select').property('value');
 
 let svg = d3.select("#container")
 	.append("svg")
@@ -58,39 +74,27 @@ d3.json("../Data/world-map.json", function(json) {
 		}
 	});
 
-	d3.csv("../Data/ratebeer_dataset_all.csv", function(data) {
+	d3.csv("../Data/ratebeer_dataset_all_with_loc.csv", function(data) {
 		const fullDict = csvToBeerDict(data);
-		console.log(fullDict);
 		//Draw map & show tooltip with name when mouse over country
-		var map_window = d3.select("g").selectAll("path")
+		let map_window = d3.select("g").selectAll("path")
 			.data(countries.features)
 			.enter()
 			.append("path")
 			.attr("class", "boundary")
 			.attr("d", path)
 			.style("fill", function(d) {
-				return color(fullDict["avgDict"][d.name]);
+				//return color based on average
+				return color(fullDict["avgScore"][d.name]);
 			})
-			//.style("opacity", 0.7)
-			.on("mouseover", function(d) {
-		    	div.transition()
-		           .style("opacity", 1);
-		           div.text(d.name + ", " + fullDict["avgDict"][d.name])
-		           .style("left", (d3.event.pageX - 10) + "px")
-		           .style("top", (d3.event.pageY - 20) + "px");
-			})
-
-		    // fade out tooltip on mouse out
-		    .on("mouseout", function(d) {
-		        div.transition()
-		           .style("opacity", 0);
-		    })
 			.on("click", function(d) {
 				document.getElementById("information").style.display = "block";
 				document.getElementById("countryName").innerHTML = "Country: " +  d.name;
-				document.getElementById("averageScore").innerHTML =  "Average Score: " + fullDict["avgDict"][d.name];
+				document.getElementById("averageScore").innerHTML =  "Average Score: " + fullDict["avgScore"][d.name];
 
-				if (selectedCountry.node() === this) return zoomOutOnClick();
+				if(selectedCountry.node() === this) {
+					return zoomOutOnClick();
+				}
 			  	selectedCountry.classed("active", false);
 			  	selectedCountry = d3.select(this).classed("active", true);
 
@@ -104,47 +108,63 @@ d3.json("../Data/world-map.json", function(json) {
 
 			  	svg.transition()
 			    	.duration(750)
-			      	.call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) );
+			      	.call( zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale));
 			});
 	});
-
-	/**
-	 * Keeping this in case we want to let the names on the map.
-	 */
-	//svg.selectAll("text")
-	//	.data(countries.features)
-	//	.enter().append("text")
-	//	.attr("transform", (d) => "translate(" + path.centroid(d) + ")")
-	//	.attr("font-size", ".6em")
-	//	.attr("fill", "black")
-	//	.text((d) => d.name);
 });
+
+//Draw cities on the map
+//d3.csv("cities.csv", function(error, data) {
+//    g.selectAll("circle")
+//    	.data(data)
+//        .enter()
+//        .append("a")
+//		.attr("xlink:href", function(d) {
+//					   return "https://www.google.com/search?q="+d.city;}
+//				  )
+//        .append("circle")
+//        .attr("cx", function(d) {
+//                return projection([d.lon, d.lat])[0];
+//        })
+//        .attr("cy", function(d) {
+//                return projection([d.lon, d.lat])[1];
+//        })
+//        .attr("r", 5)
+//        .style("fill", "red");
+//});
 
 /**
  * [Create and order (based on score) dictionary of Country: [beer, score],
- * another one of Country: Average score and returns them both]
+ * another one of Country: Average score, another one of Country: Average alcool
+ * another one of Country: Average calory and returns them all]
  * @param  {[CSV]} data [CSV file]
- * @return {[dictionary]}     [The dictionaries with key beerDict and avgDict]
+ * @return {[dictionary]}     [The dictionaries with key beerDict, avgScore, avgAlc and avgCal]
  */
 function csvToBeerDict(data) {
 	let dictWithAvg = {};
 	let beerDict = {};
-	let avgDict = {};
+	let avgScore = {};
+	let avgAlc = {};
+	let avgCal = {};
 
 	for(let i = 0; i < data.length; i++) {
 		let country = data[i].country;
 		let score = data[i].score;
 		let name = data[i].name;
+		let alcool = data[i].abv;
+		let cal = data[i].cal;
 
 		//Filter sparse data
-		if(country === "" || name === "" || score === "") {
+		if(country === "" || name === "" || score === "" || alcool === "" || cal === "") {
 			continue;
 		}
 
 		score = parseInt(score);
+		alcool = parseInt(alcool);
+		cal = parseInt(cal);
 
 		//Clean USA data
-		if(country.indexOf(" USA") > 0) {
+		if(country.indexOf(" USA") > -1) {
 			country = "United States of America";
 		}
 
@@ -155,22 +175,35 @@ function csvToBeerDict(data) {
 
 		if(!(country in beerDict)) {
 			beerDict[country] = [];
-			avgDict[country] = 0;
+			avgScore[country] = 0;
+			avgAlc[country] = 0;
+			avgCal[country] = 0;
 		}
 		beerDict[country].push([[name], score]);
-		avgDict[country] += score;
+		avgScore[country] += score;
+		avgAlc[country] += alcool;
+		avgCal[country] += cal;
 	}
 
 	// Ordering and getting average for each country.
 	for(let key in beerDict){
 		beerDict[key].sort(function(x, y){return y[1] - x[1]});
-		avgDict[key] = avgDict[key] / beerDict[key].length;
+		avgScore[key] = avgScore[key] / beerDict[key].length;
+		avgAlc[key] = avgAlc[key] / beerDict[key].length;
+		avgCal[key] = avgCal[key] / beerDict[key].length;
 	}
 
 	dictWithAvg["beerDict"] = beerDict;
-	dictWithAvg["avgDict"] = avgDict;
+	dictWithAvg["avgScore"] = avgScore;
+	dictWithAvg["avgAlc"] = avgAlc;
+	dictWithAvg["avgCal"] = avgCal;
 	return dictWithAvg;
 };
+
+function changeMap() {
+	selectedMap = d3.select('select').property('value');
+	console.log(selectedMap);
+}
 
 //Rescale when window size changes
 function sizeChange() {
