@@ -85,8 +85,8 @@ function changeMap() {
 	selectedMap = d3.select('select').property('value');
 	d3.select('#container').selectAll('path').remove();
 	d3.select('#container').selectAll('circle').remove();
-	drawMap("../Data/ratebeer_dataset_all_with_loc.csv", countries);
-	drawCities("../Data/ratebeer_dataset_all_with_loc.csv");
+	drawMap(beerData_path, countries);
+	drawCities(beerData_path);
 };
 
 // Rescale when window size changes

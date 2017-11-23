@@ -20,7 +20,7 @@ function listBeer(data, name, isCountry) {
 				c = data[i].city;
 			}
 
-			if(c === name) {
+			if((c === name) && (c != "")) {
 				switch(selectedMap) {
 					case "Alcool %":
 						if(data[i].abv === "") {
@@ -39,8 +39,9 @@ function listBeer(data, name, isCountry) {
 					default:
 						if(data[i].score === "") {
 							beers.push([data[i].name, " " + unknown]);
+						} else {
+							beers.push([data[i].name, " " + data[i].score]);
 						}
-						beers.push([data[i].name, " " + data[i].score]);
 				}
 			}
 		}
