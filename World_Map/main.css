@@ -2,6 +2,11 @@ body {
 	font: 5px sans-serif;
 }
 
+.container {
+    border: 2px solid black;
+    background-color: white;
+}
+
 .boundary {
   fill: none;
   stroke: #fff;
