@@ -1,0 +1,16 @@
+sens,types,description
+taste,finish,dry fruity sweet alcoholic warming bitter acidic buttery wet quenching lingering
+taste,intensity,assertive mild bold balanced robust intense metallic harsh complex delicate refined hearty
+taste,notes,roasted bready bitter sweet spicy fruity chocolate caramel toffee coffee malty tart subtle woodsy earthy sulfuric
+sight,clarity,brilliant hazy cloudy turbid opaque clear crystal bright dull
+sight,color,honey caramel russet red brown root beer amber chestnut dark red apricot orange black burnt auburn garnet ruby copper deep gold
+sight,head,persistent rocky large fluffy dissipating lingering white off white tan frothy delicate
+smell,acidic,metallic vinegar copper cidery champagne-like astringent chlorine
+smell,citrus,lemon lime orange tangerine clementine grapefruit Curacao orange peel lemon zest
+smell,dark_fruit,aisins currant plum dates prunes figs blackberry blueberry
+smell,light_fruit,banana pineapple apricot pear apple nectarine peach mango prickly pear
+smell,notes,malty grainy sweet corn-like hay straw graham cracker bicuity caramel toast roast coffee espresso burnt alcohol tobacco gunpowder leather pine fresh cut grass
+smell,spices_yeast,phenolic white pepper clove anise licorice smoked bacon fatty nutty butterscotch vanilla earthy woody horsey fresh bread saddle musty barnyard
+touchfeel,body,full heavy dense viscous robust medium balanced medium-light light delicate wispy
+touchfeel,carbonation,spritzy champagne-like prickly round creamy light gassy sharp delicate
+touchfeel,mouthfeel,smooth silky velvety prickly tingly creamy warming viscous hot astringent oily
