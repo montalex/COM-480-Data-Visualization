@@ -79,10 +79,10 @@ function drawCities(data_path) {
 	        .enter()
 	        .append("circle")
 	        .attr("cx", function(d) {
-	                return projection([d.lon, d.lat])[0];
+	            return projection([d.lon, d.lat])[0];
 	        })
 	        .attr("cy", function(d) {
-	                return projection([d.lon, d.lat])[1];
+	            return projection([d.lon, d.lat])[1];
 	        })
 	        .attr("r", 1)
 	        .style("fill", "red")

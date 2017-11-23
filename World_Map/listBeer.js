@@ -26,14 +26,14 @@ function listBeer(data, name, isCountry) {
 						if(data[i].abv === "") {
 							beers.push([data[i].name, " " + unknown]);
 						} else {
-							beers.push([data[i].name, " " + data[i].abv]);
+							beers.push([data[i].name, " " + data[i].abv + "%"]);
 						}
 						break;
 					case "Calory":
 						if(data[i].cal === "") {
 							beers.push([data[i].name, " " + unknown]);
 						} else {
-							beers.push([data[i].name, " " + data[i].cal]);
+							beers.push([data[i].name, " " + data[i].cal + " cal."]);
 						}
 						break;
 					default:
