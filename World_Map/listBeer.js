@@ -50,7 +50,10 @@ function listBeer(data, name, isCountry) {
 			.enter()
 			.append("li")
 			.html(String)
-			.style("font-size", "10px");
+			.style("font-size", "10px")
+			.on("click", function(d) {
+				console.log(d[0]);
+			});
 };
 
 /**
