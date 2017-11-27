@@ -2,7 +2,7 @@ const width = 1000;
 const height = 900;
 const width_map = width * 70 / 100;
 const height_map = height;
-const beerData_path = "../Data/ratebeer_dataset_all_with_loc.csv";
+const beerData_path = "../Data/final_rateBeer.csv";
 
 // Select Box name
 const select_box = ["Score", "Alcool %", "Calory"];

@@ -52,7 +52,8 @@ function listBeer(data, name, isCountry) {
 			.html(String)
 			.style("font-size", "10px")
 			.on("click", function(d) {
-				console.log(d[0]);
+				removeChart();
+				drawChart(d[0]);
 			});
 };
 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <head>
+    <script data-require="d3@*" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script>
     <script src="http://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="http://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -14,11 +15,14 @@
         <div class="textfield" id="countryName"> </div>
         <div class="textfield" id="averageScore"></div>
         <div class="textfield" id="cityName"> </div>
+
     </div>
+    <div id="chart"></div>
     <script type="text/javascript" src='main.js'></script>
     <script type="text/javascript" src='listBeer.js'></script>
     <script type="text/javascript" src='drawing.js'></script>
     <script type="text/javascript" src='utils.js'></script>
+    <script type="text/javascript" src='drawChart.js'></script>
 </body>
 
 <script>

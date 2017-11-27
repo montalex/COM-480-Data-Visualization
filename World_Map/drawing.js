@@ -43,12 +43,15 @@ function drawMap(data_path, countries) {
 				document.getElementById("countryName").innerHTML = "Country: " +  d.name;
 				document.getElementById("averageScore").innerHTML =  selectedText + fullDict[selectedDict][d.name];
 				removeListBeer();
+				removeChart();
 
 				if(selectedCountry.node() === this) {
 					document.getElementById("countryName").innerHTML = "";
 					document.getElementById("averageScore").innerHTML =  "";
+					removeChart();
 					return zoomOutOnClick();
 				}
+				
 			  	selectedCountry.classed("active", false);
 			  	selectedCountry = d3.select(this).classed("active", true);
 
@@ -89,6 +92,7 @@ function drawCities(data_path) {
 			.on("click", function(d) {
 				document.getElementById("countryName").innerHTML = "Country: " +  d.country;
 				document.getElementById("cityName").innerHTML = "City: " +  d.city;
+				removeChart();
 				removeListBeer();
 				listBeer(data, d.city, false);
 			});
