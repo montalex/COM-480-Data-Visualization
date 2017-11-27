@@ -87,6 +87,7 @@ function drawCities(data_path) {
 	        .attr("r", 1)
 	        .style("fill", "red")
 			.on("click", function(d) {
+				document.getElementById("countryName").innerHTML = "Country: " +  d.country;
 				document.getElementById("cityName").innerHTML = "City: " +  d.city;
 				removeListBeer();
 				listBeer(data, d.city, false);
