@@ -50,13 +50,13 @@ Code,Name
 174,Comoros
 175,Mayotte
 178,Congo
-180,Democratic Republic of the Congo
+180,Dem Rep of Congo
 184,Cook Islands
 188,Costa Rica
 191,Croatia
 192,Cuba
 196,Cyprus
-203,Czechia
+203,Czech Republic
 204,Benin
 208,Denmark
 212,Dominica
@@ -108,7 +108,7 @@ Code,Name
 372,Ireland
 376,Israel
 380,Italy
-384,Ivory Cost
+384,Ivory Coast
 388,Jamaica
 392,Japan
 398,Kazakhstan
@@ -117,8 +117,8 @@ Code,Name
 408,North Korea
 410,South Korea
 414,Kuwait
-417,Kyrgyzstan
-418,Lao People's Democratic Republic
+417,Kyrgyz Republic
+418,Laos
 422,Lebanon
 426,Lesotho
 428,Latvia
@@ -178,12 +178,12 @@ Code,Name
 616,Poland
 620,Portugal
 624,Guinea-Bissau
-626,Timor-Leste
+626,East Timor
 630,Puerto Rico
 634,Qatar
 638,Reunion
 642,Romania
-643,Russian Federation
+643,Russia
 646,Rwanda
 652,Saint Barthélemy
 654,Saint Helena
@@ -196,13 +196,13 @@ Code,Name
 674,San Marino
 678,Sao Tome and Principe
 682,Saudi Arabia
-686,Senegal
+686,Senegal Republic
 688,Serbia
 690,Seychelles
 694,Sierra Leone
 702,Singapore
-703,Slovakia
-704,Viet Nam
+703,Slovak Republic
+704,Vietnam
 705,Slovenia
 706,Somalia
 710,South Africa
@@ -216,7 +216,7 @@ Code,Name
 748,Swaziland
 752,Sweden
 756,Switzerland
-760,Syrian Arab Republic
+760,Syria
 762,Tajikistan
 764,Thailand
 768,Togo
