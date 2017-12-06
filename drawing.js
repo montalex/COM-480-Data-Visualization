@@ -1,3 +1,7 @@
+let fullDict = {};
+let selectedDict = "avgScore";
+let selectedText = "Average Score: ";
+
 /**
  * [Draws map in the svg]
  * @param  {[String]} data_path [Path to csv file]
@@ -5,9 +9,7 @@
  */
 function drawMap(data_path, countries) {
 	d3.csv(data_path, data => {
-		const fullDict = csvToBeerDict(data);
-		let selectedDict = "avgScore";
-		let selectedText = "Average Score: ";
+		fullDict = csvToBeerDict(data);
 		switch(selectedMap) {
 			case "Alcool %":
 				selectedDict = "avgAlc";
@@ -51,7 +53,7 @@ function drawMap(data_path, countries) {
 					removeChart();
 					return zoomOutOnClick();
 				}
-				
+
 			  	selectedCountry.classed("active", false);
 			  	selectedCountry = d3.select(this).classed("active", true);
 
@@ -92,6 +94,7 @@ function drawCities(data_path) {
 			.on("click", function(d) {
 				document.getElementById("countryName").innerHTML = "Country: " +  d.country;
 				document.getElementById("cityName").innerHTML = "City: " +  d.city;
+				document.getElementById("averageScore").innerHTML =  selectedText + fullDict[selectedDict][d.country];
 				removeChart();
 				removeListBeer();
 				listBeer(data, d.city, false);
