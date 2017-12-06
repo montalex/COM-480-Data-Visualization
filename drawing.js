@@ -42,30 +42,12 @@ function drawMap(data_path, countries) {
 				//Clean text block on new click
 				document.getElementById("cityName").innerHTML = "";
 				document.getElementById("information").style.display = "block";
-				document.getElementById("countryName").innerHTML = "Country: " +  d.name;
+				document.getElementById("countryName").innerHTML = d.name;
 				document.getElementById("averageScore").innerHTML =  selectedText + fullDict[selectedDict][d.name];
 				removeListBeer();
 				removeChart();
-
-				if(selectedCountry.node() === this) {
-					document.getElementById("countryName").innerHTML = "";
-					document.getElementById("averageScore").innerHTML =  "";
-					removeChart();
-				}
-
-			  	selectedCountry.classed("active", false);
-			  	selectedCountry = d3.select(this).classed("active", true);
-
-				//let limits = path.bounds(d),
-			    //  	dx = limits[1][0] - limits[0][0],
-			    //  	dy = limits[1][1] - limits[0][1],
-			    //  	x = (limits[0][0] + limits[1][0]) / 2,
-			    //  	y = (limits[0][1] + limits[1][1]) / 2,
-			    //  	scale = Math.max(1, Math.min(4, 0.9 / Math.max(dx / width_map, dy / height_map))),
-			    //  	translate = [width_map / 2 - scale * x + 100, height_map / 2 - scale * y - 100];
-			    //
-			    zoomOnCountry(d);
 				listBeer(data, d.name, true);
+			    zoomOnCountry(d);
 			});
 	});
 };
@@ -89,12 +71,11 @@ function drawCities(data_path) {
 	        .attr("r", 1)
 	        .style("fill", "red")
 			.on("click", function(d) {
-				document.getElementById("countryName").innerHTML = "Country: " +  d.country;
+				document.getElementById("countryName").innerHTML = d.country;
 				document.getElementById("cityName").innerHTML = "City: " +  d.city;
 				document.getElementById("averageScore").innerHTML =  selectedText + fullDict[selectedDict][d.country];
 				removeChart();
 				removeListBeer();
-				//zoomOnCountry(d.country);
 				listBeer(data, d.city, false);
 			});
 	});
@@ -116,6 +97,9 @@ function zoomOnCountry(d) {
 		y = height / 2;
 		zoom = 1;
 		centered = null;
+		document.getElementById("countryName").innerHTML = "";
+		document.getElementById("averageScore").innerHTML =  "";
+		removeListBeer();
 	}
 
 	svg.selectAll("path")

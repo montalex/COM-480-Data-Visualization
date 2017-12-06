@@ -44,7 +44,7 @@ function listBeer(data, name, isCountry) {
 			index += 1;
 		}
 	}
-	
+
 	let rows = d3.select("#beer-table-body").selectAll("tr")
 		.data(beers)
 		.enter()
@@ -96,6 +96,5 @@ function listBeer(data, name, isCountry) {
  * [Clean list of beer from side div]
  */
 function removeListBeer() {
-	d3.select("#beer-table-body").selectAll("tr")
-		.remove();
+	d3.select("#beer-table-body").selectAll("tr").remove();
 }
