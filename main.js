@@ -1,7 +1,5 @@
-const width = 1000;
-const height = 500;
-const width_map = width * 70 / 100;
-const height_map = height;
+const width = 1068;
+const height = 641;
 const beerData_path = "data/final_rateBeer.csv";
 
 // Select Box name
@@ -9,26 +7,29 @@ const select_box = ["Score", "Alcool %", "Calory"];
 
 // D3 Projection
 const projection = d3.geoNaturalEarth1()
-	.center([25, 10])
-	.scale(200);
+	.scale(230)
+	.translate([width / 2, height / 2]);
 
 d3.select(window).on("resize", sizeChange);
 
 // path generator to convert JSON to SVG paths
 let path = d3.geoPath().projection(projection);
-
+let selectedMap = "Score";
 // Create select box
-var select = d3.select('#container')
-  	.append('select')
-	.attr('class','select')
-    .on('change',changeMap);
-var options = select
-	.selectAll('option')
+let options = d3.select('#button-select')
+	.selectAll('button')
 	.data(select_box)
 	.enter()
-	.append('option')
-	.text(d => { return d; });
-let selectedMap = d3.select('select').property('value');
+	.append('button')
+	.attr('class', 'btn btn-default')
+	.text(d => { return d; })
+	.on('click', function(d) {
+		selectedMap = d;
+		d3.select('#container').selectAll('path').remove();
+		d3.select('#container').selectAll('circle').remove();
+		drawMap(beerData_path, countries);
+		drawCities(beerData_path);
+	});
 
 let svg = d3.select("#container")
 	.append("svg")
@@ -36,6 +37,11 @@ let svg = d3.select("#container")
 	.attr("width", "100%")
 	.attr("height", "100%")
 	.append("g");
+
+// Setup center map for Zooming - Dezooming
+svg.transition()
+	.duration(0)
+	.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + 1 + ")translate(" + - width / 2 + "," + -height / 2 + ")")
 
 let selectedCountry = d3.select(null);
 
@@ -80,35 +86,8 @@ d3.json("data/world-map.json", json => {
 	drawCities(beerData_path);
 });
 
-// Modify map when selection in dropdown is changed
-function changeMap() {
-	selectedMap = d3.select('select').property('value');
-	d3.select('#container').selectAll('path').remove();
-	d3.select('#container').selectAll('circle').remove();
-	drawMap(beerData_path, countries);
-	drawCities(beerData_path);
-};
-
 // Rescale when window size changes
 function sizeChange() {
 	d3.select("g").attr("transform", "scale(" + $("#container").width()/900 + ")");
 	$("svg").height($("#container").width()*0.6);
 };
-
-// Zooming
-var zoom = d3.zoom()
-    .on("zoom", zooming);
-svg.call(zoom);
-
-function zooming() {
-	d3.select("g").attr("transform", d3.event.transform);
-};
-
-// Zooming out when reclicking on same country
-function zoomOutOnClick() {
-	selectedCountry.classed("active", false);
-	selectedCountry = d3.select(null);
-	svg.transition()
-		.duration(750)
-		.call(zoom.transform, d3.zoomIdentity);
-}

@@ -1,7 +1,7 @@
 let fullDict = {};
 let selectedDict = "avgScore";
 let selectedText = "Average Score: ";
-
+let centered = null;
 /**
  * [Draws map in the svg]
  * @param  {[String]} data_path [Path to csv file]
@@ -51,23 +51,20 @@ function drawMap(data_path, countries) {
 					document.getElementById("countryName").innerHTML = "";
 					document.getElementById("averageScore").innerHTML =  "";
 					removeChart();
-					return zoomOutOnClick();
 				}
 
 			  	selectedCountry.classed("active", false);
 			  	selectedCountry = d3.select(this).classed("active", true);
 
-				let limits = path.bounds(d),
-			      	dx = limits[1][0] - limits[0][0],
-			      	dy = limits[1][1] - limits[0][1],
-			      	x = (limits[0][0] + limits[1][0]) / 2,
-			      	y = (limits[0][1] + limits[1][1]) / 2,
-			      	scale = Math.max(1, Math.min(4, 0.9 / Math.max(dx / width_map, dy / height_map))),
-			      	translate = [width_map / 2 - scale * x + 100, height_map / 2 - scale * y - 100];
-
-			  	svg.transition()
-			    	.duration(750)
-			      	.call(zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale));
+				//let limits = path.bounds(d),
+			    //  	dx = limits[1][0] - limits[0][0],
+			    //  	dy = limits[1][1] - limits[0][1],
+			    //  	x = (limits[0][0] + limits[1][0]) / 2,
+			    //  	y = (limits[0][1] + limits[1][1]) / 2,
+			    //  	scale = Math.max(1, Math.min(4, 0.9 / Math.max(dx / width_map, dy / height_map))),
+			    //  	translate = [width_map / 2 - scale * x + 100, height_map / 2 - scale * y - 100];
+			    //
+			    zoomOnCountry(d);
 				listBeer(data, d.name, true);
 			});
 	});
@@ -97,7 +94,34 @@ function drawCities(data_path) {
 				document.getElementById("averageScore").innerHTML =  selectedText + fullDict[selectedDict][d.country];
 				removeChart();
 				removeListBeer();
+				//zoomOnCountry(d.country);
 				listBeer(data, d.city, false);
 			});
 	});
 };
+
+function zoomOnCountry(d) {
+	let x, y, zoom, limits, dx, dy;
+	if (d && centered !== d) {
+		let centroid = path.centroid(d);
+		x = centroid[0];
+		y = centroid[1];
+		centered = d;
+		limits = path.bounds(d);
+		dx = limits[1][0] - limits[0][0];
+		dy = limits[1][1] - limits[0][1];
+		zoom = Math.max(1, Math.min(3, 0.9 / Math.max(dx / width, dy / height)));
+	} else {
+		x = width / 2;
+		y = height / 2;
+		zoom = 1;
+		centered = null;
+	}
+
+	svg.selectAll("path")
+	  .classed("active", centered && function(d) { return d === centered; });
+
+	svg.transition()
+		.duration(750)
+		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + zoom + ")translate(" + -x + "," + -y + ")")
+}

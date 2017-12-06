@@ -65,15 +65,15 @@ function drawChart(beerName) {
 
     gradients.append("stop")
         .attr("offset", "0%")
-        .attr("stop-color", "#CEECF5");
+        .attr("stop-color", "#F79400");
 
     gradients.append("stop")
         .attr("offset", "50%")
-        .attr("stop-color", "#2ECCFA");
+        .attr("stop-color", "#D87800");
 
     gradients.append("stop")
         .attr("offset", "100%")
-        .attr("stop-color", "#01A9DB");
+        .attr("stop-color", "#C04800");
 
     svg.append("circle")
         .attr("r", maxBarHeight + 70)
@@ -93,13 +93,9 @@ function drawChart(beerName) {
 
 
     d3.json('data/beer_desc.json', json => {
-        console.log(json[beerName])
-
         let cats = json[beerName].map(({
             sens
         }, i) => sens);
-
-        //console.log(cats)
 
         let catCounts = {};
 
@@ -154,11 +150,9 @@ function drawChart(beerName) {
             let endAngle = ((i + 1) * 2 * Math.PI) / numCatBars;
 
             if (startAngle > Math.PI / 2 && startAngle < 3 * Math.PI / 2 && endAngle > Math.PI / 2 && endAngle < 3 * Math.PI / 2) {
-                let //Everything between the capital M and first capital A
-                    startLoc = /M(.*?)A/; //Everything between the 0 0 1 and the end of the string (denoted by $)
+                let startLoc = /M(.*?)A/;
 
-                let //Everything between the capital A and 0 0 1
-                    middleLoc = /A(.*?)0 0 1/;
+                let middleLoc = /A(.*?)0 0 1/;
 
                 let endLoc = /0 0 1 (.*?)$/;
                 //Flip the direction of the arc by switching the start and end point (and sweep flag)

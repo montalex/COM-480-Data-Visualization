@@ -1,66 +1,101 @@
 const sizeShown = 5;
 const unknown = "unknown";
+let lastSelected = null;
 
 function listBeer(data, name, isCountry) {
 	let beers = [];
-		for(let i = 0; (i < data.length) && (beers.length < sizeShown); i++) {
-			let c = "";
-			if(isCountry) {
-				c = data[i].country;
+	let index = 1;
+	for(let i = 0; (i < data.length) && (beers.length < sizeShown); i++) {
+		let c = "";
+		if(isCountry) {
+			c = data[i].country;
 
-				//Clean USA data
-				if(c.indexOf(" USA") > -1) {
-					c = "United States of America";
-				}
-				//Clean UK data
-				if(c === "England" || c === "Scotland" || c === "Wales" || c === "Northern Ireland") {
-					c = "United Kingdom";
-				}
-			} else {
-				c = data[i].city;
+			//Clean USA data
+			if(c.indexOf(" USA") > -1) {
+				c = "United States of America";
 			}
-
-			if((c === name) && (c != "")) {
-				switch(selectedMap) {
-					case "Alcool %":
-						if(data[i].abv === "") {
-							beers.push([data[i].name, " " + unknown]);
-						} else {
-							beers.push([data[i].name, " " + data[i].abv + "%"]);
-						}
-						break;
-					case "Calory":
-						if(data[i].cal === "") {
-							beers.push([data[i].name, " " + unknown]);
-						} else {
-							beers.push([data[i].name, " " + data[i].cal + " cal."]);
-						}
-						break;
-					default:
-						if(data[i].score === "") {
-							beers.push([data[i].name, " " + unknown]);
-						} else {
-							beers.push([data[i].name, " " + data[i].score]);
-						}
-				}
+			//Clean UK data
+			if(c === "England" || c === "Scotland" || c === "Wales" || c === "Northern Ireland") {
+				c = "United Kingdom";
 			}
+		} else {
+			c = data[i].city;
 		}
-		d3.select("#information").selectAll("li")
-			.data(beers)
-			.enter()
-			.append("li")
-			.html(String)
-			.style("font-size", "10px")
-			.on("click", function(d) {
-				removeChart();
-				drawChart(d[0]);
-			});
+
+		if((c === name) && (c != "")) {
+			temp_list = [index, data[i].name];
+			if(data[i].score === "") {
+				temp_list.push(unknown);
+			} else {
+				temp_list.push(data[i].score);
+			}
+			if(data[i].abv === "") {
+				temp_list.push(unknown);
+			} else {
+				temp_list.push(data[i].abv + "%");
+			}
+
+			if(data[i].cal === "") {
+				temp_list.push(unknown);
+			} else {
+				temp_list.push(data[i].cal);
+			}
+			beers.push(temp_list);
+			index += 1;
+		}
+	}
+	
+	let rows = d3.select("#beer-table-body").selectAll("tr")
+		.data(beers)
+		.enter()
+		.append("tr")
+		.style("font-size", "15px")
+		.on("click", function(d) {
+			removeChart();
+			drawChart(d[1]);
+		});
+	lastSelected = rows;
+	rows.append("td")
+		.text(function(d) {
+			return d[0]
+		}).on("click", function(){
+			lastSelected.style("background-color", "white");
+			lastSelected = d3.select(this.parentNode).style("background-color", "#F79400");
+		});
+	rows.append("td")
+		.text(function(d) {
+			return d[1]
+		}).on("click", function(){
+			lastSelected.style("background-color", "white");
+			lastSelected = d3.select(this.parentNode).style("background-color", "#F79400");
+		});
+	rows.append("td")
+		.text(function(d) {
+			return d[2]
+		}).on("click", function(){
+			lastSelected.style("background-color", "white");
+			lastSelected = d3.select(this.parentNode).style("background-color", "#F79400");
+		});
+	rows.append("td")
+		.text(function(d) {
+			return d[3]
+		}).on("click", function(){
+			lastSelected.style("background-color", "white");
+			lastSelected = d3.select(this.parentNode).style("background-color", "#F79400");
+		});
+	rows.append("td")
+		.text(function(d) {
+			return d[4]
+		}).on("click", function(){
+			lastSelected.style("background-color", "white");
+			lastSelected = d3.select(this.parentNode).style("background-color", "#F79400");
+		});
 };
 
 /**
  * [Clean list of beer from side div]
  */
 function removeListBeer() {
-	d3.select("#information").selectAll("li")
+	d3.select("#beer-table-body").selectAll("tr")
 		.remove();
 }
