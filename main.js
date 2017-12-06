@@ -45,11 +45,6 @@ svg.transition()
 
 let selectedCountry = d3.select(null);
 
-//colormap for selected dropdown option
-const color = d3.scaleLog()
-	.range(["hsl(62,100%,90%)", "hsl(228,30%,20%)"])
-	.interpolate(d3.interpolateHcl);
-
 // Append Div for tooltip to SVG
 let div = d3.select("body")
     .append("div")

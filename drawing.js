@@ -2,6 +2,19 @@ let fullDict = {};
 let selectedDict = "avgScore";
 let selectedText = "Average Score: ";
 let centered = null;
+
+//colormap for selected dropdown option
+const colorScore = d3.scaleLinear().domain([0,5])
+	.range([d3.rgb('#F5DF86'), d3.rgb('#C04800')])
+	.interpolate(d3.interpolateHcl);
+
+const colorAlc = d3.scaleLinear().domain([0,20])
+	.range([d3.rgb('#F5DF86'), d3.rgb('#C04800')])
+	.interpolate(d3.interpolateHcl);
+
+const colorCal = d3.scaleLinear().domain([0,400])
+	.range([d3.rgb('#F5DF86'), d3.rgb('#C04800')])
+	.interpolate(d3.interpolateHcl);
 /**
  * [Draws map in the svg]
  * @param  {[String]} data_path [Path to csv file]
@@ -33,10 +46,17 @@ function drawMap(data_path, countries) {
 			.style("fill", d => {
 				//return color based on average
 				let colorValue = fullDict[selectedDict][d.name];
-				if(selectedMap === "Calory") {
-					colorValue = Math.max(colorValue / 100, 1.0);
+				if(colorValue == undefined) {
+					colorValue = 0;
 				}
-				return color(colorValue);
+				if(selectedMap === "Alcool %") {
+					return colorAlc(colorValue);
+				} else if(selectedMap === "Calory") {
+					return colorCal(colorValue);
+				} else {
+					return colorScore(colorValue);
+				}
+
 			})
 			.on("click", function(d) {
 				//Clean text block on new click
@@ -108,4 +128,8 @@ function zoomOnCountry(d) {
 	svg.transition()
 		.duration(750)
 		.attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + zoom + ")translate(" + -x + "," + -y + ")")
+}
+
+function focusOnElement(element_id) {
+     $('#div_' + element_id).goTo(); // need to 'go to' this element
 }
