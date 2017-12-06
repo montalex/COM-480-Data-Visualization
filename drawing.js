@@ -15,6 +15,8 @@ const colorAlc = d3.scaleLinear().domain([0,20])
 const colorCal = d3.scaleLinear().domain([0,400])
 	.range([d3.rgb('#F5DF86'), d3.rgb('#C04800')])
 	.interpolate(d3.interpolateHcl);
+
+var colorLegend = null;
 /**
  * [Draws map in the svg]
  * @param  {[String]} data_path [Path to csv file]
@@ -89,7 +91,7 @@ function drawCities(data_path) {
 	            return projection([d.lon, d.lat])[1];
 	        })
 	        .attr("r", 1)
-	        .style("fill", "red")
+	        .style("fill", "#3f3f3f")
 			.on("click", function(d) {
 				document.getElementById("countryName").innerHTML = d.country;
 				document.getElementById("cityName").innerHTML = "City: " +  d.city;
