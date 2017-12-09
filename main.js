@@ -1,13 +1,13 @@
-const width = 1068;
-const height = 641;
+const width = 593;
+const height = 355;
 const beerData_path = "data/final_rateBeer.csv";
 
 // Select Box name
-const select_box = ["Score", "Alcool %", "Calory"];
+const select_box = ["Score", "Alcool %", "Calories"];
 
 // D3 Projection
 const projection = d3.geoNaturalEarth1()
-	.scale(230)
+	.scale(110)
 	.translate([width / 2, height / 2]);
 
 d3.select(window).on("resize", sizeChange);
@@ -21,7 +21,7 @@ let options = d3.select('#button-select')
 	.data(select_box)
 	.enter()
 	.append('button')
-	.attr('class', 'btn btn-default')
+	.attr('class', 'btn btn-success')
 	.text(d => { return d; })
 	.on('click', function(d) {
 		selectedMap = d;

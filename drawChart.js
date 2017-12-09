@@ -136,7 +136,7 @@ function drawChart(beerName) {
             .attr("fill", "none")
             .attr("d", arc_category_label);
 
-        category_text.each(function(d, i) {
+        category_text.each(function (d, i) {
             //Search pattern for everything between the start and the first capital L
             let firstArcSection = /(^.+?)L/;
 
@@ -199,7 +199,7 @@ function drawChart(beerName) {
             .attr("fill", "none")
             .attr("d", arc_question_label);
 
-        question_text.each(function({
+        question_text.each(function ({
             startAngle,
             endAngle
         }, i) {
@@ -209,8 +209,10 @@ function drawChart(beerName) {
             let newArc = firstArcSection.exec(d3.select(this).attr("d"))[1];
             //Replace all the commas so that IE can handle it
             newArc = newArc.replace(/,/g, " ");
+            
+            console.log(d3.select(this).attr("d"))
 
-            if (startAngle > Math.PI / 2 && startAngle < 3 * Math.PI / 2 && endAngle > Math.PI / 2 && endAngle < 3 * Math.PI / 2) {
+            if (startAngle > Math.PI / 1 && startAngle < 2 * Math.PI / 2 && endAngle > Math.PI / 2 && endAngle < 3 * Math.PI / 2) {
                 let //Everything between the capital M and first capital A
                     startLoc = /M(.*?)A/; //Everything between the 0 0 1 and the end of the string (denoted by $)
 
@@ -242,6 +244,7 @@ function drawChart(beerName) {
             }) => desc.toUpperCase())
             .call(wrapTextOnArc, maxBarHeight);
 
+        
         /* bars */
         let arc = d3.arc()
             .startAngle(({
@@ -317,7 +320,7 @@ function wrapTextOnArc(text, radius) {
         return temporaryText.node().getComputedTextLength();
     };
 
-    text.each(function({
+    text.each(function ({
         endAngle,
         startAngle
     }) {
@@ -335,7 +338,7 @@ function wrapTextOnArc(text, radius) {
 
         let x = 0;
         let y = 0;
-        let dy = 0;
+        let dy = -2;
         let tspan = text.text(null).append("tspan").attr("x", x).attr("y", y).attr("dy", dy + "em");
         let arcLength = ((endAngle - startAngle) / (2 * Math.PI)) * (2 * Math.PI * radius);
         let paddedArcLength = arcLength - 16;

@@ -8,12 +8,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Project Data Viz</title>
+    <title>World Of Beer</title>
 
     <!-- Bootstrap core CSS -->
+    <!--
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+-->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!--
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+-->
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -28,7 +33,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">Project DataViz</a>
+            <a class="navbar-brand" href="#">World Of Beer</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,15 +51,18 @@
     <div class="container">
 
         <!-- Call to Action Well -->
-        <div class="card text-white bg-secondary my-4 text-center">
+        <div class="card text-white bg-secondary my-4 text-center" id="intro">
             <div class="card-body">
-                <p class="text-white m-0" style="font-size:30px;">A World Of Beer</p>
+                <p class="text-white m-0" style="font-size:30px;">World Of Beer</p>
+                <p align="center">This website is intended to visualize beers from all around the world with their ranking per country and quick insights such as similarities or beer description according to their reviews on <span class="label label-warning"><a href="https://www.ratebeer.com/">RateBeer</a></span>
+                    <br><br> <a class="btn btn-primary" href="#" role="button" onclick="rm_jumbotron()">Let me explore :)</a></p>
+
             </div>
         </div>
-
+        
         <!-- Content Row -->
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row" style='margin-bottom:10px; margin-top: 10px;'>
+            <div class="col-md-7">
                 <div class="card h-100">
                     <div class="card-body">
                         <h2 class="card-title">Beer Map</h2>
@@ -62,32 +70,81 @@
                             <div align='center'>
                                 <div class="btn-group btn-group" role="group" id="button-select" style='margin-bottom:10px;'></div>
                             </div>
+                            <!--
+                            <div align='center' style='margin-bottom:10px;'>
+                                <input type="button" class="btn btn-info" onClick="document.getElementById('chart').scrollIntoView()" ; value="Check country information" />
+                            </div>
+-->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <!-- /.col-md-4 -->
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Top 5 beers</h2>
+                        <h2 class="card-title">Top beers</h2>
                         <div id="information">
-                            <div class="textfield" id="countryName" style='font-size:25px;'></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">Location</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div id='countryName'> </div>
+                                            <div id="cityName"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title" id="averageScore"></h3>
+                                        </div>
+                                        <div class="panel-body" id="score"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--
                             <div class="textfield" id="cityName"> </div>
                             <div class="textfield" id="averageScore"></div>
+-->
                         </div>
                         <table class="table" id="beer-table">
                             <thead>
                                 <th>#</th>
                                 <th>Name</th>
                                 <th>Score</th>
-                                <th>Alcool%</th>
-                                <th>Calories</th>
+                                <th>Alc (%)</th>
+                                <th>kCal</th>
                             </thead>
                             <tbody id="beer-table-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row" id="beer-stat">
+            <!-- /.col-md-4 -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Top 5 Similarities</h2>
+                        <div id="information">
+                        </div>
+                        <table class="table" id="">
+                            <thead>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Country</th>
+                                <th>City</th>
+                                <th>Score</th>
+                            </thead>
+                            <tbody id=""></tbody>
                         </table>
                     </div>
                 </div>
@@ -113,7 +170,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Dataviz-beerproject 2017</p>
+            <p class="m-0 text-center text-white">Copyright &copy; WorldOfBeer2017</p>
         </div>
         <!-- /.container -->
     </footer>
@@ -135,7 +192,14 @@
     $(document).ready(function() {
         document.getElementById("information").style.display = "none";
     });
+</script>
 
+<script>
+    function rm_jumbotron() {
+        var jumbo;
+        jumbo = document.getElementById("intro");
+        jumbo.style.display = "none";
+    }
 </script>
 
 </html>

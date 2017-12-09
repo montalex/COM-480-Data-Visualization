@@ -28,15 +28,15 @@ function drawMap(data_path, countries) {
 		switch(selectedMap) {
 			case "Alcool %":
 				selectedDict = "avgAlc";
-				selectedText = "Average Alcool %: ";
+				selectedText = "Average Alcool (%)";
 				break;
 			case "Calory":
 				selectedDict = "avgCal";
-				selectedText = "Average Calories: ";
+				selectedText = "Average kCalories";
 				break;
 			default:
 				selectedDict = "avgScore";
-				selectedText = "Average Score: ";
+				selectedText = "Average Score";
 		}
 		//Draw map
 		d3.select("g").selectAll("path")
@@ -65,7 +65,9 @@ function drawMap(data_path, countries) {
 				document.getElementById("cityName").innerHTML = "";
 				document.getElementById("information").style.display = "block";
 				document.getElementById("countryName").innerHTML = d.name;
-				document.getElementById("averageScore").innerHTML =  selectedText + fullDict[selectedDict][d.name];
+				document.getElementById("averageScore").innerHTML =  selectedText;
+                document.getElementById("score").innerHTML =  fullDict[selectedDict][d.name];
+
 				removeListBeer();
 				removeChart();
 				listBeer(data, d.name, true);
@@ -94,9 +96,9 @@ function drawCities(data_path) {
 	        .style("fill", "#3f3f3f")
 			.on("click", function(d) {
 				document.getElementById("countryName").innerHTML = d.country;
-				document.getElementById("cityName").innerHTML = "City: " +  d.city;
-				document.getElementById("averageScore").innerHTML =  selectedText + fullDict[selectedDict][d.country];
-				removeChart();
+				document.getElementById("cityName").innerHTML = d.city;
+				document.getElementById("averageScore").innerHTML =  selectedText;
+                document.getElementById("score").innerHTML =  fullDict[selectedDict][d.name];				removeChart();
 				removeListBeer();
 				listBeer(data, d.city, false);
 			});
@@ -121,6 +123,8 @@ function zoomOnCountry(d) {
 		centered = null;
 		document.getElementById("countryName").innerHTML = "";
 		document.getElementById("averageScore").innerHTML =  "";
+        document.getElementById("score").innerHTML =  "";
+
 		removeListBeer();
 	}
 
