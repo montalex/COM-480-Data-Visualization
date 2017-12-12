@@ -54,10 +54,10 @@ let div = d3.select("body")
 // Countries variable get filled by the json
 let countries = null;
 
-d3.json("data/world-map.json", json => {
+d3.json("Data/world-map.json", json => {
 	countries = topojson.feature(json, json.objects.countries);
 	// Adding Country name to json.
-	d3.csv("data/country-code.csv", data => {
+	d3.csv("Data/country-code.csv", data => {
 		// Loop through each country data value in the .csv file
 		for(let i = 0; i < data.length; i++) {
 			// Country code
