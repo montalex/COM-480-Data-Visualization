@@ -99,8 +99,10 @@ function drawCities(data_path) {
 				document.getElementById("countryName").innerHTML = d.country;
 				document.getElementById("cityName").innerHTML = d.city;
 				document.getElementById("averageScore").innerHTML =  selectedText;
-                document.getElementById("score").innerHTML =  fullDict[selectedDict][d.name];				removeChart();
+                document.getElementById("score").innerHTML =  fullDict[selectedDict][d.country];
+				removeChart();
 				removeListBeer();
+				removeListSim();
 				listBeer(data, d.city, false);
 			});
 	});
