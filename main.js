@@ -1,6 +1,6 @@
 const width = 593;
 const height = 355;
-const beerData_path = "data/final_rateBeer.csv";
+const beerData_path = "Data/final_rateBeer.csv";
 
 // Select Box name
 const select_box = ["Score", "Alcool %", "Calories"];
