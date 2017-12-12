@@ -24,8 +24,8 @@ function csvToBeerDict(data) {
 			continue;
 		}
 
-		score = parseInt(score);
-		alcool = parseInt(alcool);
+		score = parseFloat(score);
+		alcool = parseFloat(alcool);
 		cal = parseInt(cal);
 
 		//Clean USA data
