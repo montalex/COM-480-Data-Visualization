@@ -70,6 +70,7 @@ function drawMap(data_path, countries) {
 
 				removeListBeer();
 				removeChart();
+				removeListSim();
 				listBeer(data, d.name, true);
 			    zoomOnCountry(d);
 			});
