@@ -30,7 +30,7 @@ function drawMap(data_path, countries) {
 				selectedDict = "avgAlc";
 				selectedText = "Average Alcool (%)";
 				break;
-			case "Calory":
+			case "Calories":
 				selectedDict = "avgCal";
 				selectedText = "Average kCalories";
 				break;
@@ -53,7 +53,7 @@ function drawMap(data_path, countries) {
 				}
 				if(selectedMap === "Alcool %") {
 					return colorAlc(colorValue);
-				} else if(selectedMap === "Calory") {
+				} else if(selectedMap === "Calories") {
 					return colorCal(colorValue);
 				} else {
 					return colorScore(colorValue);

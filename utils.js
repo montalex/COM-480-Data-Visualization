@@ -1,7 +1,7 @@
 /**
  * [Create and order (based on score) dictionary of Country: [beer, score],
  * another one of Country: Average score, another one of Country: Average alcool
- * another one of Country: Average calory and returns them all]
+ * another one of Country: Average calories and returns them all]
  * @param  {[CSV]} data [CSV file]
  * @return {[dictionary]}     [The dictionaries with key beerDict, avgScore, avgAlc and avgCal]
  */
