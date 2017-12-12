@@ -92,7 +92,7 @@ function drawChart(beerName) {
         .classed("center-circle", true);
 
 
-    d3.json('Data/beer_desc_final.json', json => {
+    d3.json('Data/beer_desc.json', json => {
         let cats = json[beerName].map(({
             sens
         }, i) => sens);
