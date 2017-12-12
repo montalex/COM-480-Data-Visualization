@@ -10,7 +10,6 @@ function listSim (beerName) {
             for(var i in data)
                 data2.push(data[i]);
 
-
             let rows = d3.select("#table-sim").selectAll("tr")
                 .data(data2)
                 .enter()
@@ -26,13 +25,16 @@ function listSim (beerName) {
                 })
                 .enter()
                 .append('td')
-                .text(function (d) { return d.value; });
-
-            return table;
+                .text(function (d) {
+                    if(isFloat(d.value)) {
+                        return d.value.toFixed(2);
+                    } else {
+                        return d.value;
+                    }
+                });
         }
 
         // render the table(s)
-        console.log(json[beerName])
         tabulate(json[beerName], ['name', 'country','city','sim']); // 4 column table
 
     });
@@ -41,4 +43,8 @@ function listSim (beerName) {
 
 function removeListSim() {
     d3.select("#table-sim").selectAll("tr").remove();
+}
+
+function isFloat(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
 }

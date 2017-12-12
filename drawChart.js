@@ -209,8 +209,6 @@ function drawChart(beerName) {
             let newArc = firstArcSection.exec(d3.select(this).attr("d"))[1];
             //Replace all the commas so that IE can handle it
             newArc = newArc.replace(/,/g, " ");
-            
-            console.log(d3.select(this).attr("d"))
 
             if (startAngle > Math.PI / 1 && startAngle < 2 * Math.PI / 2 && endAngle > Math.PI / 2 && endAngle < 3 * Math.PI / 2) {
                 let //Everything between the capital M and first capital A
@@ -244,7 +242,7 @@ function drawChart(beerName) {
             }) => desc.toUpperCase())
             .call(wrapTextOnArc, maxBarHeight);
 
-        
+
         /* bars */
         let arc = d3.arc()
             .startAngle(({
