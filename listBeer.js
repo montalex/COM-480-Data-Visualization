@@ -53,6 +53,9 @@ function listBeer(data, name, isCountry) {
 		.on("click", function(d) {
 			removeChart();
 			drawChart(d[1]);
+            removeListSim();
+            listSim (d[1]);
+
 		});
 	lastSelected = rows;
 	rows.append("td")
