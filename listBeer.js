@@ -49,7 +49,7 @@ function listBeer(data, name, isCountry) {
 		.data(beers)
 		.enter()
 		.append("tr")
-		.style("font-size", "15px")
+		.style("font-size", "12px")
 		.on("click", function(d) {
 			removeChart();
 			drawChart(d[1]);

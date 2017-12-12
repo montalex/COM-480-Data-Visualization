@@ -14,7 +14,7 @@ function listSim (beerName) {
                 .data(data2)
                 .enter()
                 .append('tr')
-                .style("font-size", "15px")
+                .style("font-size", "12px")
 
             // create a cell in each row for each column
             var cells = rows.selectAll('td')
