@@ -103,6 +103,6 @@ ENV/
 # DS_Store
 .DS_Store
 
-ratebeer2.csv
-
 ratebeer_dataset_2.csv
+
+ratebeer2.csv

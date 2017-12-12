@@ -1,0 +1,322 @@
+achoccha
+acid
+acidic
+alcohol
+alcoholic
+amaranth
+amber
+angelica
+anise
+apple
+apricot
+arrowroot
+arrugula
+artichoke
+asparagus
+assertive
+astringent
+atemoya
+avocado
+balanced
+balsam apple 
+balsam pear 
+bambara groundnut
+bamboo
+banana
+banana and plantains
+barbados cherry
+barnyard
+beans
+beet
+bicuity
+bitter
+bitterness
+black
+blackberry
+blueberry
+bok choy
+bold
+boniato 
+bready
+bright
+brilliant
+broccoli
+brown
+brussels sprouts
+bunch grape
+burdock
+burnt
+burntauburn
+butterscotch
+buttery
+cabbage
+calabaza
+cantaloupes
+capers
+carambola
+caramel
+cardoon
+carrot
+cassava
+cauliflower
+celeriac
+celery
+celtuce
+champagne-like
+chard
+chaya
+chayote
+chestnut
+chicory
+chinese
+chives
+chlorine
+chocolate
+chrysanthemum
+chufa
+cidery
+cilantro
+citron
+clear
+clementine
+cloudy
+clove
+coconut palm
+coffee
+collards
+comfrey
+complex
+copper
+corn
+corn salad
+corn-like
+creamy
+crystal
+cuban sweet potato
+cucumber
+curaçaoorangepeel
+currant
+cushcush
+daikon
+dandelion
+darkred
+dasheen
+dates
+deepgold
+delicate
+dense
+dill
+dissipating
+dry
+dull
+earthy
+eggplant
+endive
+espresso
+eugenia
+fatty
+fennel
+fig
+figs
+fluffy
+freshbread
+freshcutgrass
+frothy
+fruity
+full
+galia muskmelon
+garbanzo
+garlic
+garnet
+gassy
+gherkin
+ginger
+ginseng
+gourds
+grahamcracker
+grainy
+grape
+grapefruit
+guar
+guava
+gunpowder
+hanover salad
+harsh
+hay
+hazy
+hearty
+heavy
+honey
+horseradish
+horseradish tree
+horsey
+hot
+huckleberry
+ice plant
+intense
+jaboticaba
+jackfruit
+jicama
+jojoba
+kale
+kangkong
+kohlrabi
+large
+leather
+leek
+lemon
+lemonzest
+lentils
+lettuce
+licorice
+light
+lime
+lingering
+longan
+loquat
+lovage
+luffa gourd
+lychee
+macadamia
+malanga
+malty
+mamey sapote
+mango
+martynia
+medium
+medium-light
+metallic
+mild
+momordica
+muscadine grape
+mushroom
+muskmelons
+mustard
+mustard collard
+musty
+naranjillo
+nasturtium
+nectarine
+nutty
+offwhite
+oily
+okra
+onion
+opaque
+orach
+orange
+oriental persimmon
+papaya
+paprika
+parsley
+parsley root
+parsnip
+passion fruit
+peach
+peanut production
+pear
+peas
+pecan
+pepper
+persimmon
+persistent
+phenolic
+pimiento
+pine
+pineapple
+pineapple guava
+pitaya
+plum
+pokeweed
+pomegranate
+potato
+prickly
+pricklypear
+prunes
+pumpkin
+purslane
+quenching
+radicchio
+radish
+raisins
+rakkyo
+rampion
+raspberry
+refined
+rhubarb
+roast
+roasted
+robust
+rocky
+romaine lettuce
+rootbeer
+roselle
+round
+ruby
+russetred
+rutabaga
+saddle
+saffron
+salsify
+sapodilla
+sarsaparilla
+sassafrass
+scorzonera
+sea kale
+seagrape
+shallot
+sharp
+silky
+skirret
+smallage
+smokedbacon
+smooth
+sorrel
+southern pea
+soybeans
+spicy
+spinach
+spondias
+spritzy
+squash
+straw
+strawberries
+subtle
+sugar apple
+sulfuric
+swamp cabbage
+sweet
+sweetness
+sweet basil
+sweet corn
+sweet potato
+swiss chard
+tan
+tangerine
+tart
+tingly
+toast
+tobacco
+toffee
+tomatillo
+tomato
+truffles
+turbid
+turnip
+upland cress
+vanilla
+velvety
+vinegar
+viscous
+warming
+water celery
+waterchestnut
+watercress
+watermelon
+wet
+white
+whitepepper
+wispy
+woodsy
+woody
+yams
