@@ -50,12 +50,12 @@ div.tooltip {
   display: none;
 }
 
-.category-circle {
+.sens-circle {
   fill: #F0D878;
 }
 
-.question-circle {
-  fill: url(#gradient-questions);
+.type-circle {
+  fill: url(#gradient-types);
 }
 
 .chart-area-circle {
@@ -85,30 +85,32 @@ div.tooltip {
   stroke-width: 6px
 }
 
-.question-label-arc {
-  /*fill: white;
+.type-label-arc {
+/*
+  fill: white;
     stroke: #AAAAAA;
     fill: url(#gradient-questions);*/
 }
 
-.category-label-text {
+
+.sens-label-text {
   font-weight: bold;
   font-size: 14px;
   fill: #fff;
 }
 
-.question-label-text {
+.type-label-text {
   font-size: 7px;
   font-weight: bold;
   fill: gray;
 }
 
-.question-labels {
+.type-labels {
   text-anchor: middle;
   font-weight: bold;
 }
 
-.category-labels {
+.sens-labels {
   text-anchor: middle;
   font-weight: bold;
   font-size: 14px;

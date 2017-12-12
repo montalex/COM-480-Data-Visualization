@@ -37,7 +37,7 @@ function drawChart(beerName) {
 
     gradients = defs
         .append("linearGradient")
-        .attr("id", "gradient-questions")
+        .attr("id", "gradient-types")
         .attr("x1", "50%")
         .attr("y1", "0%")
         .attr("x2", "50%")
@@ -77,11 +77,11 @@ function drawChart(beerName) {
 
     svg.append("circle")
         .attr("r", maxBarHeight + 70)
-        .classed("category-circle", true);
+        .classed("sens-circle", true);
 
     svg.append("circle")
         .attr("r", maxBarHeight + 40)
-        .classed("question-circle", true);
+        .classed("type-circle", true);
 
     svg.append("circle")
         .attr("r", maxBarHeight)
@@ -116,27 +116,27 @@ function drawChart(beerName) {
             angle += (2 * Math.PI) / numCatBars / catCounts[d.sens];
             d.endAngle = angle;
 
-            // y axis minor lines (i.e. questions) rotation
+            // y axis minor lines (i.e. types) rotation
             d.rotate = rotate;
             rotate += 360 / numCatBars / catCounts[d.sens];
         });
 
-        // category_label
-        let arc_category_label = d3.arc()
+        // sens_label
+        let arc_sens_label = d3.arc()
             .startAngle((d, i) => (i * 2 * Math.PI) / numCatBars)
             .endAngle((d, i) => ((i + 1) * 2 * Math.PI) / numCatBars)
             .innerRadius(maxBarHeight + 40)
             .outerRadius(maxBarHeight + 64);
 
-        let category_text = svg.selectAll("path.category_label_arc")
+        let sens_text = svg.selectAll("path.sens_label_arc")
             .data(cats)
             .enter().append("path")
-            .classed("category-label-arc", true)
-            .attr("id", (d, i) => "category_label_" + i) //Give each slice a unique ID
+            .classed("sens-label-arc", true)
+            .attr("id", (d, i) => "sens_label_" + i) //Give each slice a unique ID
             .attr("fill", "none")
-            .attr("d", arc_category_label);
+            .attr("d", arc_sens_label);
 
-        category_text.each(function (d, i) {
+        sens_text.each(function (d, i) {
             //Search pattern for everything between the start and the first capital L
             let firstArcSection = /(^.+?)L/;
 
@@ -162,14 +162,17 @@ function drawChart(beerName) {
 
                 //Build up the new arc notation, set the sweep-flag to 0
                 newArc = "M" + newStart + "A" + middleSec + "0 0 0 " + newEnd;
+
             }
             d3.select(this).attr("d", newArc);
+            console.log(d3.select(this).attr("d"))
+
         });
 
-        svg.selectAll(".category-label-text")
+        svg.selectAll(".sens-label-text")
             .data(cats)
             .enter().append("text")
-            .attr("class", "category-label-text")
+            .attr("class", "sens-label-text")
             .attr("dy", (d, i) => {
                 let startAngle = (i * 2 * Math.PI) / numCatBars;
                 let endAngle = ((i + 1) * 2 * Math.PI) / numCatBars;
@@ -178,11 +181,11 @@ function drawChart(beerName) {
             .append("textPath")
             .attr("startOffset", "50%")
             .style("text-anchor", "middle")
-            .attr("xlink:href", (d, i) => "#category_label_" + i)
+            .attr("xlink:href", (d, i) => "#sens_label_" + i)
             .text(d => d.toUpperCase());
 
-        // question_label
-        let arc_question_label = d3.arc()
+        // type_label
+        let arc_type_label = d3.arc()
             .startAngle(({
                 startAngle
             }, i) => startAngle)
@@ -191,15 +194,16 @@ function drawChart(beerName) {
             }, i) => endAngle)
             .outerRadius(maxBarHeight + 2);
 
-        let question_text = svg.selectAll("path.desc_arc")
+        let type_text = svg.selectAll("path.desc_arc")
             .data(json[beerName])
             .enter().append("path")
-            .classed("question-label-arc", true)
-            .attr("id", (d, i) => "question_label_" + i) //Give each slice a unique ID
+            .classed("type-label-arc", true)
+            .attr("id", (d, i) => "type_label_" + i) //Give each slice a unique ID
             .attr("fill", "none")
-            .attr("d", arc_question_label);
+            .attr("d", arc_type_label);
 
-        question_text.each(function ({
+
+        type_text.each(function ({
             startAngle,
             endAngle
         }, i) {
@@ -210,7 +214,6 @@ function drawChart(beerName) {
             //Replace all the commas so that IE can handle it
             newArc = newArc.replace(/,/g, " ");
             
-            console.log(d3.select(this).attr("d"))
 
             if (startAngle > Math.PI / 1 && startAngle < 2 * Math.PI / 2 && endAngle > Math.PI / 2 && endAngle < 3 * Math.PI / 2) {
                 let //Everything between the capital M and first capital A
@@ -229,16 +232,18 @@ function drawChart(beerName) {
                 newArc = "M" + newStart + "A" + middleSec + "0 0 0 " + newEnd;
             }
             d3.select(this).attr("d", newArc);
+
+
         });
 
-        question_text = svg.selectAll(".question-label-text")
+        type_text = svg.selectAll(".type-label-text")
             .data(json[beerName])
             .enter().append("text")
-            .attr("class", "question-label-text")
+            .attr("class", "type-label-text")
             .append("textPath")
             .style('font-size', '7px')
             .style('font-family', 'sans-serif')
-            .attr("xlink:href", (d, i) => "#question_label_" + i)
+            .attr("xlink:href", (d, i) => "#type_label_" + i)
             .text(({
                 desc
             }) => desc.toUpperCase())
@@ -288,7 +293,7 @@ function drawChart(beerName) {
             .classed("gridlines minor", true)
             .attr("r", d => x_scale(d));
 
-        // question lines
+        // type lines
         svg.selectAll("line.y.minor")
             .data(json[beerName])
             .enter().append("line")
@@ -297,7 +302,7 @@ function drawChart(beerName) {
             .attr("y2", -maxBarHeight - 40)
             .attr("transform", (d, i) => "rotate(" + (d.rotate) + ")");
 
-        // category lines
+        // sens lines
         svg.selectAll("line.y.major")
             .data(cats)
             .enter().append("line")
