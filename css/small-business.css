@@ -5,7 +5,7 @@
  */
 
 body {
-  padding-top: 54px;
+    padding-top: 54px;
 }
 
 .worldmap {
@@ -14,32 +14,45 @@ body {
 }
 
 .boundary {
-  fill: none;
-  stroke: #fff;
-  stroke-linejoin: round;
-  stroke-width: .5px;
+    fill: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+    stroke-width: .5px;
 }
 
 div.tooltip {
-      color: #222;
-      background: #fff;
-      border-radius: 3px;
-      box-shadow: 0px 0px 2px 0px #a6a6a6;
-      padding: .2em;
-      text-shadow: #f5f5f5 0 1px 0;
-      opacity: 0.9;
-      position: absolute;
+    color: #222;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: 0px 0px 2px 0px #a6a6a6;
+    padding: .2em;
+    text-shadow: #f5f5f5 0 1px 0;
+    opacity: 0.9;
+    position: absolute;
 }
 
 .textfield {
-	font-size: 15pt;
+    font-size: 15pt;
 }
+
+.bar {
+    fill: steelblue;
+}
+
+  .bar:hover{
+    fill: orange;
+  }
+
+.axis {
+    font: 10px sans-serif;
+}
+
 
 .axis path,
 .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
 }
 
 
@@ -47,79 +60,77 @@ div.tooltip {
 
 .axis .tick line,
 .axis path {
-  display: none;
+    display: none;
 }
 
 .sens-circle {
-  fill: #F0D878;
+    fill: #F0D878;
 }
 
 .type-circle {
-  fill: url(#gradient-types);
+    fill: url(#gradient-types);
 }
 
 .chart-area-circle {
-  stroke: #fff;
-  stroke-width: 3px;
-  fill: url(#gradient-chart-area);
+    stroke: #fff;
+    stroke-width: 3px;
+    fill: url(#gradient-chart-area);
 }
 
 .center-circle {
-  fill: #fff;
+    fill: #fff;
 }
 
 .bars {
-  fill: url(#gradient-bars);
+    fill: url(#gradient-bars);
 }
 
 .gridlines {
-  fill: none;
-  stroke: #fff;
+    fill: none;
+    stroke: #fff;
 }
 
 .minor {
-  stroke-width: 1px
+    stroke-width: 1px
 }
 
 .major {
-  stroke-width: 6px
+    stroke-width: 6px
 }
 
 .type-label-arc {
-/*
+    /*
   fill: white;
     stroke: #AAAAAA;
     fill: url(#gradient-questions);*/
 }
 
-
 .sens-label-text {
-  font-weight: bold;
-  font-size: 14px;
-  fill: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    fill: #fff;
 }
 
 .type-label-text {
-  font-size: 7px;
-  font-weight: bold;
-  fill: gray;
+    font-size: 7px;
+    font-weight: bold;
+    fill: gray;
 }
 
 .type-labels {
-  text-anchor: middle;
-  font-weight: bold;
+    text-anchor: middle;
+    font-weight: bold;
 }
 
 .sens-labels {
-  text-anchor: middle;
-  font-weight: bold;
-  font-size: 14px;
-  fill: #fff;
+    text-anchor: middle;
+    font-weight: bold;
+    font-size: 14px;
+    fill: #fff;
 }
 
-
 @media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
+    body {
+        padding-top: 56px;
+    }
 }
