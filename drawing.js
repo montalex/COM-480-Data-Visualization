@@ -72,6 +72,9 @@ function drawMap(data_path, countries) {
 				removeChart();
 				removeListSim();
 				listBeer(data, d.name, true);
+                console.log(d.name);
+                removeBar();
+                drawBar(d.name);
 			    zoomOnCountry(d);
 			});
 	});
