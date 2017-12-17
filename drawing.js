@@ -72,7 +72,6 @@ function drawMap(data_path, countries) {
 				removeChart();
 				removeListSim();
 				listBeer(data, d.name, true);
-                console.log(d.name);
                 removeBar();
                 drawBar(d.name);
 			    zoomOnCountry(d);
@@ -130,8 +129,8 @@ function zoomOnCountry(d) {
 		document.getElementById("countryName").innerHTML = "";
 		document.getElementById("averageScore").innerHTML =  "";
         document.getElementById("score").innerHTML =  "";
-
 		removeListBeer();
+		removeBar();
 	}
 
 	svg.selectAll("path")
