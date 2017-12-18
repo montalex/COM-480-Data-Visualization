@@ -36,11 +36,11 @@ div.tooltip {
 }
 
 .bar {
-    fill: steelblue;
+    fill: orange;
 }
 
   .bar:hover{
-    fill: orange;
+    fill: yellow;
   }
 
 .axis {

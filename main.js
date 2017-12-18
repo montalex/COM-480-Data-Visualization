@@ -1,5 +1,5 @@
 const width = 593;
-const height = 355;
+let height = 355;
 const beerData_path = "Data/final_rateBeer.csv";
 
 // Select Box name
@@ -7,7 +7,7 @@ const select_box = ["Score", "Alcool %", "Calories"];
 
 // D3 Projection
 const projection = d3.geoNaturalEarth1()
-	.scale(110)
+	.scale(120)
 	.translate([width / 2, height / 2]);
 
 d3.select(window).on("resize", sizeChange);
