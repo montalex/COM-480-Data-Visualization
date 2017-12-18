@@ -55,6 +55,7 @@ function listBeer(data, name, isCountry) {
 			drawChart(d[1]);
             removeListSim();
             listSim (d[1]);
+            window.location.href="#beer-stat"
 
 		});
 	lastSelected = rows;

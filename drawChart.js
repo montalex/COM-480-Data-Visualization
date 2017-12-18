@@ -1,7 +1,7 @@
 function drawChart(beerName) {
     let margin = 0;
-    let width = 500;
-    let height = 500;
+    let width = 450;
+    let height = 450;
     let maxBarHeight = height / 2 - (margin + 70);
 
     let innerRadius = 0.1 * maxBarHeight;

@@ -11,6 +11,7 @@ body {
 .worldmap {
     border: 2px solid black;
     background-color: white;
+
 }
 
 .boundary {
@@ -18,6 +19,13 @@ body {
     stroke: #fff;
     stroke-linejoin: round;
     stroke-width: .5px;
+    cursor: pointer;
+
+}
+
+.boundary:hover{
+    background-color: rgba(0, 0, 0, 0.075);
+
 }
 
 div.tooltip {
@@ -134,3 +142,25 @@ div.tooltip {
         padding-top: 56px;
     }
 }
+
+#countryName {
+    font-size: 12px;
+}
+
+#cityName {
+    font-size: 12px;
+}
+
+#score {
+    font-size: 12px;
+}
+
+:target {padding-top: 70px;}
+
+
+
+
+
+
+
+

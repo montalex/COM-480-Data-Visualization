@@ -14,18 +14,18 @@
     <!--
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 -->
-    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
     <!--
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 -->
+    <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-    <!-- Custom styles for this template -->
+    <!-- Custom styles from the template -->
     <link href="css/small-business.css" rel="stylesheet">
 
 </head>
@@ -36,22 +36,19 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">World Of Beer</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-              </a>
+                        <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./processBook.html">Process Book</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="https://www.github.com/montalex/COM-480-Data-Visualization">
-                             <img src="Data/GitHub_logo.png" class="nav-link" style="width:35px;height:35px;"></img>
+                            <i class="fa fa-github fa-lg" aria-hidden="true"></i>
                         </a>
                     </li>
                 </ul>
@@ -63,34 +60,38 @@
     <div class="container">
 
         <!-- Call to Action Well -->
-        <div class="card text-white bg-secondary my-4 text-center" id="intro">
-            <div class="card-body">
-                <p class="text-white m-0" style="font-size:30px;">World Of Beer</p>
-                <p align="center">This website is intended to visualize beers from all around the world with their ranking per country and quick insights such as similarities or beer description according to their reviews on <span class="label label-warning"><a href="https://www.ratebeer.com/">RateBeer</a></span>
-                    <br><br> <a class="btn btn-primary" href="#" role="button" onclick="rm_jumbotron()">Let me explore :)</a></p>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card text-white bg-secondary text-center" id="intro">
+                    <div class="card-body">
+                        <p class="text-white m-0" style="font-size:30px;">World Of Beer</p>
+                        <p align="center">This website is intended to visualize beers from all around the world with their ranking per country and quick insights such as similarities or beer description according to their reviews on <span class="label label-warning"><a href="https://www.ratebeer.com/">RateBeer</a></span>
+                            <br><br> <a class="btn btn-primary" href="#" role="button" onclick="rm_jumbotron()">Let me explore :)</a></p>
 
+                    </div>
+                </div>
             </div>
         </div>
-
         <!-- Content Row -->
-        <div class="row" style='margin-bottom:10px; margin-top: 10px;'>
+        <div class="row">
             <div class="col-md-7">
-                <div class="card h-100">
+                <div class="card h-100 text-center">
                     <div class="card-body">
-                        <h2 class="card-title">Beer Map</h2>
+                        <h2 class="card-title">Map</h2>
                         <div id="container">
                             <div align='center'>
-                                <div class="btn-group btn-group" role="group" id="button-select" style='margin-bottom:10px;'></div>
+                                <div class="btn-group btn-group" role="group" id="button-select"></div>
+                                <p style="font-size: 9px; margin-bottom: 30px"><i>*choose the choropleth parameters</i></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-md-5">
-                <div class="card h-100">
+                <div class="card h-100 text-center">
                     <div class="card-body">
                         <h2 class="card-title">Top beers</h2>
-                        <div class="row">
+                        <div class="row" style="margin-top:15px;">
                             <div class="col-md-6">
                                 <div class="panel panel-default">
                                     <div class="panel-heading">
@@ -112,19 +113,13 @@
                                 </div>
                             </div>
                         </div>
-
-
-                        <!--
-                            <div class="textfield" id="cityName"> </div>
-                            <div class="textfield" id="averageScore"></div>
--->
-                        <table class="table" id="beer-table">
+                        <table class="table table-hover" id="beer-table" style="font-size: 12px;">
                             <thead>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Score</th>
-                                <th>Alc (%)</th>
-                                <th>kCal</th>
+                                <th style="width: 2%">#</th>
+                                <th style="width: 50%">Name</th>
+                                <th style="width: 18%">Score</th>
+                                <th style="width: 20%">Alc (%)</th>
+                                <th style="width: 10%">kCal</th>
                             </thead>
                             <tbody id="beer-table-body"></tbody>
                         </table>
@@ -133,20 +128,21 @@
             </div>
         </div>
 
-        <div class="row" style='margin-bottom:10px;' id="beer-stat">
+
+        <div class="row" id="beer-stat">
             <!-- /.col-md-4 -->
             <div class="col-md-6">
-                <div class="card h-100">
+                <div class="card h-100 text-center">
                     <div class="card-body">
-                        <h2 class="card-title">Top 5 Similarities</h2>
+                        <h2 class="card-title">Top similarities</h2>
                         <div id="information">
                         </div>
-                        <table class="table" id="">
+                        <table class="table" style="font-size: 12px;">
                             <thead>
-                                <th>Name</th>
-                                <th>Country</th>
-                                <th>City</th>
-                                <th>Similarity Score</th>
+                                <th style="width: 40%">Name</th>
+                                <th style="width: 20%">Country</th>
+                                <th style="width: 10%">City</th>
+                                <th style="width: 30%">Similarity Score</th>
                             </thead>
                             <tbody id="table-sim"></tbody>
                         </table>
@@ -155,7 +151,7 @@
             </div>
             <!-- /.col-md-4 -->
             <div class="col-md-6">
-                <div class="card h-100">
+                <div class="card h-100 text-center">
                     <div class="card-body">
                         <h2 class="card-title">Review chart</h2>
                         <div id="chart"></div>
@@ -164,20 +160,19 @@
             </div>
         </div>
 
-        <div class="row" style='margin-bottom:10px;'>
+        <div class="row">
             <div class="col-md-12">
-                <div class="card h-100">
+                <div class="card h-100 text-center">
                     <div class="card-body">
-                        <h2 class="card-title">Most represented beer styles</h2>
+                        <h2 class="card-title">Common beer styles</h2>
                         <div id="barchart"></div>
+                        <button class="btn btn-danger" onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                     </div>
                 </div>
 
             </div>
         </div>
-
         <!-- /.row -->
-
     </div>
     <!-- /.container -->
 
@@ -218,5 +213,15 @@
         jumbo.style.display = "none";
     }
 </script>
+    
+<script>
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+</script>   
+
 
 </html>
