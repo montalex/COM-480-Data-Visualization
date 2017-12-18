@@ -59,44 +59,125 @@
         </div>
     </nav>
 
-
-
-
     <div class="container">
-
 
         <div class="row my-4">
             <!-- /.col-lg-8 -->
             <div class="col-lg-12">
                 <h1>Project booklet</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                <p "text-align:justify;">This process book exlains the development of the Data visualization project
+                    done at EPFL in the fall of 2017. It is to be read as a logbook on the advance of the project for each
+                    week we worked on it. The project's idea was to realize a visualization using D3 and other
+                    recent libraries to get a first taste in web visualisation. We decided to show in an interactive way
+                    thousands of beers that were reviewed on <a href="https://www.ratebeer.com">Ratebeer.com</a>.
+                </p>
             </div>
             <!-- /.col-md-4 -->
         </div>
 
         <div class="row my-4">
             <div class="col-lg-6">
-                <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
+                <img class="img-fluid rounded" src="Data/ratebeer_example.png" alt="">
             </div>
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
-                <h2>Week1</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <h2>Week 9</h2>
+                <p style="text-align:justify;">After submitting our proposal, we started thinking of a way
+                    to get the data we needed. We decided to scrap the “ratebeer”
+                    website in order to get the top 50 beers by country. We could
+                    fastly accumulate a total of 4400 beers with their respective features as :
+                    type, rating, amount of alcohol and calories. With this we started exploring and analysing
+                    the data in order to get a better idea of what we will be able to do.
+                    Warning: the data used in this visualization was scraped in early november and might not reflect
+                    the actual state of Ratebeer today.
+                </p>
             </div>
             <!-- /.col-md-4 -->
         </div>
         <div class="row my-4">
             <div class="col-lg-8">
-                <h2>Week2</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                <h2>Week 10</h2>
+                <p style="text-align:justify;">At the beginning of this week we could get a
+                    first working visualisation of a map using D3. Up to there we tried to improve it in order to
+                    have a more interactive map changing parameters next to the visualization.
+                    We could thus represent a topojson map according to these parameters :
+                    “rating score mean”, “alcohol percentage mean” and “calorie mean”.
+                    Moreover, we succeed in representing each beer location by a clickable point from which we could get
+                    informations about the beer and the country zooming on it (as well as the top five beers).
+                    These informations are then displayed next to the map.</p>
+                <p style="text-align:justify;">In parallel, we focused on having a clean and easy to use dataset. Moreover, we tried to find an
+                    interesting way to compare the different beers. We thus decided to scrap the comments used to describe
+                    each beer containing informations about the taste, the smell, the sight and feel.
+                    From there we found relevant to represent these informations under the form
+                    of a wheel partitioned in this way and displayed next to the map (when clicking on a
+                    beer from the top beer list of the country.)
+                    To do that, we agglomerated each comments registered on ratebeer.com for each beer.
+                    Using a “countvectorizer” from sklearn, we managed to represent each beer with a vector defined
+                    on a “prebuilt” vocabulary used to describe the beers. We got this vocabulary from the website: <a href="https://www.winning-homebrew.com/beer-flavor-descriptors.html">Winning-Homebrew.com</a>.
+                    Then our vectorizer, automatically added for each entry (word of our vocabulary) the number of time a given word appeared in the comments of the beer.
+                    From this vector we decided to map each word to a more general category (the one from the wheel) in order to display it as on the right figure.</p>
             </div>
             <div class="col-lg-4">
-                <img class="img-fluid rounded" src="http://placehold.it/900x400" alt="">
+                <img class="img-fluid rounded" src="Data/first_wheel.png" alt="">
             </div>
             <!-- /.col-lg-8 -->
 
             <!-- /.col-md-4 -->
         </div>
+
+        <div class="row my-4">
+            <div class="col-lg-4">
+                <img class="img-fluid rounded" src="Data/first_map.png" alt="">
+            </div>
+            <!-- /.col-lg-8 -->
+            <div class="col-lg-6">
+                <h2>Week 11</h2>
+                <p style="text-align:justify;">This week we focused on developping the actual website and integrate every part
+                    we had done in the previous steps. To do so we looked online for some kind of template for inspiration and decided
+                    to go with a <a href="https://getbootstrap.com">Bootstrap theme</a>.
+                </p>
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+
+        <div class="row my-4">
+            <!-- /.col-lg-8 -->
+            <div class="col-lg-6">
+                <h2>Week 12</h2>
+                <p style="text-align:justify;">After several tests, we decided to give up the idea of the edges
+                    pointing to the similar beers. The problem was, that due to the quantity of points on the map,
+                    the rendering after displaying the edges was too messy. Moreover, we would have to go up on
+                    the web page and zoom on the map to have a clear overview which for the user was a lack of time.
+                    We thus decided to list the top five beers on an array related to the selected on the beer list displayed next to the map.
+                    In order to compute the similarities, we again used the agglomerated comments for each beer that we represented under the form of a vector
+                    using the previously described approach. Then, we computed the cosine similarity between each vectors as shown below.
+                    And for every beer we could show a similarity table like this one.
+                </p>
+            </div>
+            <div class="col-lg-4">
+                <img class="img-fluid rounded" src="Data/sim-table.png" alt="">
+            </div>
+            <div class="col-lg-4">
+                <img class="img-fluid rounded" src="Data/sim-calcul.png" alt="">
+            </div>
+
+            <!-- /.col-md-4 -->
+        </div>
+
+        <div class="row my-4">
+            <div class="col-lg-4">
+                <img class="img-fluid rounded" src="Data/style_beer.png" alt="">
+            </div>
+            <!-- /.col-lg-8 -->
+            <div class="col-lg-6">
+                <h2>Week 13</h2>
+                <p style="text-align:justify;">In order to give some more informations to the user about each country and the beers they brew,
+                    we decided to add a bar chart with most common the types of beer in the selected country.
+                </p>
+            </div>
+            <!-- /.col-md-4 -->
+        </div>
+
         <div class="row" style='margin-top:10px;'>
             <div class="col-md-12 mb-12">
                 <div class="card h-100">
@@ -116,7 +197,10 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h2 class="card-title">Alexis Montavon</h2>
-                        <p class="card-text">MSc. Data Science</p>
+                        <p class="card-text">MSc. Computer Science</p>
+                        <p>
+                            <a href="https://github.com/montalex">GitHub page</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -126,6 +210,9 @@
                     <div class="card-body">
                         <h2 class="card-title">Boris Flueckiger</h2>
                         <p class="card-text">MSc. Communication Systems</p>
+                        <p>
+                            <a href="https://github.com/BorisFlu">GitHub page</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -135,6 +222,9 @@
                     <div class="card-body">
                         <h2 class="card-title">Yu Yamashita</h2>
                         <p class="card-text">MSc. Communication Systems</p>
+                        <p>
+                            <a href="https://github.com/yamash">GitHub page</a>
+                        </p>
                     </div>
                 </div>
             </div>
