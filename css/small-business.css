@@ -44,12 +44,12 @@ div.tooltip {
 }
 
 .bar {
-    fill: orange;
+    fill: #F0D878;
 }
 
-  .bar:hover{
-    fill: yellow;
-  }
+.bar:hover{
+    fill: #D87800;
+}
 
 .axis {
     font: 10px sans-serif;
@@ -66,10 +66,12 @@ div.tooltip {
 
 /* hide y axis */
 
+/*
 .axis .tick line,
 .axis path {
     display: none;
 }
+*/
 
 .sens-circle {
     fill: #F0D878;

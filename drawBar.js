@@ -53,7 +53,7 @@ function drawBar(cntryName) {
 
         // add axis
         svg.append("g")
-            .attr("class", "x axis")
+            .attr("class", "x axis-bar")
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis)
             .selectAll("text")
@@ -63,15 +63,14 @@ function drawBar(cntryName) {
             .attr("transform", "rotate(-90)");
 
         svg.append("g")
-            .attr("class", "y axis")
+            .attr("class", "y axis-bar")
             .call(yAxis)
             .append("text")
             .attr("transform", "rotate(-90)")
-            .attr("y", 10)
-            .attr("dy", "0.71em")
+            .attr("y", 5)
+            .attr("dy", "0.70em")
             .style("text-anchor", "end")
             .attr("fill", "#5D6971")
-
             .text("Count");
 
 

@@ -23,6 +23,7 @@ let options = d3.select('#button-select')
 	.append('button')
 	.attr('class', 'btn btn-success')
 	.text(d => { return d; })
+    .style('font-size', '12px')
 	.on('click', function(d) {
 		selectedMap = d;
 		d3.select('#container').selectAll('path').remove();
