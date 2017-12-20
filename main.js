@@ -84,6 +84,8 @@ d3.json("Data/world-map.json", json => {
 
 // Rescale when window size changes
 function sizeChange() {
-	d3.select("g").attr("transform", "scale(" + $("#container").width()/900 + ")");
+//	d3.select("g").attr("transform", "scale(" + $("#container").width()/900 + ")");
+    d3.select("g").attr("transform", "scale(1)");
+
 	$("svg").height($("#container").width()*0.6);
 };
