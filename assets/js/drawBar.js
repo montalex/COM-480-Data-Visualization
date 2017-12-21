@@ -25,7 +25,7 @@ function drawBar(cntryName) {
         .ticks(10);
 
 
-    // add the SVG element
+    // add SVG element
     let svg = d3.select("#barchart")
         .append("svg")
         .attr("width", width + margin.left + margin.right)
