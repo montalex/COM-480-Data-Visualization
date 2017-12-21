@@ -19,14 +19,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 -->
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-    <!-- Custom styles from the template -->
-    <link href="css/small-business.css" rel="stylesheet">
+    <!-- Styles from the template -->
+    <link href="assets/css/main.css" rel="stylesheet">
 
 </head>
 
@@ -65,7 +66,7 @@
             <!-- /.col-lg-8 -->
             <div class="col-lg-12">
                 <h1>Project booklet</h1>
-                <p "text-align:justify;">This process book exlains the development of the Data visualization project done at EPFL in the fall of 2017. It is to be read as a logbook on the advance of the project for each week we worked on it. The project's idea was to realize a visualization using D3 and other recent libraries to get a first taste in web visualisation. We decided to show in an interactive way thousands of beers that were reviewed on <a href="https://www.ratebeer.com">Ratebeer.com</a>.
+                <p style="text-align:justify;">This process book exlains the development of the Data visualization project done at EPFL in the fall of 2017. It is to be read as a logbook on the advance of the project for each week we worked on it. The project's idea was to realize a visualization using D3 and other recent libraries to get a first taste in web visualisation. We decided to show in an interactive way thousands of beers that were reviewed on <a href="https://www.ratebeer.com">Ratebeer.com</a>.
                 </p>
             </div>
             <!-- /.col-md-4 -->
@@ -73,7 +74,7 @@
 
         <div class="row my-4">
             <div class="col-lg-6">
-                <img class="img-fluid rounded" src="Data/ratebeer_example.png" alt="">
+                <img class="img-fluid rounded" src="assets/img/ratebeer_example.png" alt="">
             </div>
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
@@ -90,7 +91,7 @@
                 <p style="text-align:justify;">In parallel, we focused on having a clean and easy to use dataset. Moreover, we tried to find an interesting way to compare the different beers. We thus decided to scrap the comments used to describe each beer containing informations about the taste, the smell, the sight and feel. From there we found relevant to represent these informations under the form of a wheel partitioned in this way and displayed next to the map (when clicking on a beer from the top beer list of the country.) To do that, we agglomerated each comments registered on ratebeer.com for each beer. Using a “countvectorizer” from sklearn, we managed to represent each beer with a vector defined on a “prebuilt” vocabulary used to describe the beers. We got this vocabulary from the website: <a href="https://www.winning-homebrew.com/beer-flavor-descriptors.html">Winning-Homebrew.com</a>. Then our vectorizer, automatically added for each entry (word of our vocabulary) the number of time a given word appeared in the comments of the beer. From this vector we decided to map each word to a more general category (the one from the wheel) in order to display it as on the right figure.</p>
             </div>
             <div class="col-lg-4">
-                <img class="img-fluid rounded" src="Data/first_wheel.png" alt="">
+                <img class="img-fluid rounded" src="assets/img/first_wheel.png" alt="">
             </div>
             <!-- /.col-lg-8 -->
 
@@ -99,12 +100,12 @@
 
         <div class="row my-4">
             <div class="col-lg-4">
-                <img class="img-fluid rounded" src="Data/first_map.png" alt="">
+                <img class="img-fluid rounded" src="assets/img/first_map.png" alt="">
             </div>
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
                 <h2>Week 11</h2>
-                <p style="text-align:justify;">This week we focused on developping the actual website and integrate every part we had done in the previous steps. To do so we looked online for some kind of template for inspiration and decided to go with a <a href="https://getbootstrap.com">Bootstrap theme</a>.
+                <p style="text-align:justify;">This week we focused on developping the actual website and integrate every part we had done in the previous steps. To do so we looked online for some kind of template for inspiration and decided to go with one of Boostrap starter template: <a href="https://startbootstrap.com/template-overviews/small-business/">Small Business</a> template.
                 </p>
             </div>
             <!-- /.col-md-4 -->
@@ -118,10 +119,10 @@
                 </p>
             </div>
             <div class="col-lg-4">
-                <img class="img-fluid rounded" src="Data/sim-table.png" alt="">
+                <img class="img-fluid rounded" src="assets/img/sim-table.png" alt="">
             </div>
             <div class="col-lg-4">
-                <img class="img-fluid rounded" src="Data/sim-calcul.png" alt="">
+                <img class="img-fluid rounded" src="assets/img/sim-calcul.png" alt="">
             </div>
 
             <!-- /.col-md-4 -->
@@ -129,7 +130,7 @@
 
         <div class="row my-4">
             <div class="col-lg-4">
-                <img class="img-fluid rounded" src="Data/style_beer.png" alt="">
+                <img class="img-fluid rounded" src="assets/img/style_beer.png" alt="">
             </div>
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
@@ -144,11 +145,10 @@
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
                 <h2>Week 14</h2>
-                <p style="text-align:justify;">In the last days of the project we spent most of our time making the website look better and beeing more responsive.
-                We then wrote this process book and added a little turtorial to the visualization for first time users, using the <a href="https://introjs.com/">introJS</a> library.</p>
+                <p style="text-align:justify;">In the last days of the project we spent most of our time making the website look better and beeing more responsive. We then wrote this process book and added a little turtorial to the visualization for first time users, using the <a href="https://introjs.com/">introJS</a> library.</p>
             </div>
             <div class="col-lg-4">
-                <img class="img-fluid rounded" src="Data/tuto-intro.png" alt="">
+                <img class="img-fluid rounded" src="assets/img/tuto-intro.png" alt="">
             </div>
 
             <!-- /.col-md-4 -->
@@ -156,13 +156,12 @@
 
         <div class="row my-4">
             <div class="col-lg-4">
-                <img class="img-fluid rounded" src="Data/final_preview.png" alt="">
+                <img class="img-fluid rounded" src="assets/img/final_preview.png" alt="">
             </div>
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
                 <h2>Conclusion</h2>
-                <p style="text-align:justify;">Here is a small preview of the final look of our project. With three team members that had never done web visualization we learnt that D3 is a very powerfull tool that any developer
-                    should be able to get started with easily.
+                <p style="text-align:justify;">Here is a small preview of the final look of our project. With three team members that had never done web visualization we learnt that D3 is a very powerfull tool that any developer should be able to get started with easily.
                 </p>
             </div>
             <!-- /.col-md-4 -->
@@ -239,7 +238,7 @@
     <!-- Footer -->
     <footer class="py-5 bg-dark">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; WorldOfBeer2017</p>
+            <p class="m-0 text-center text-white">&copy; Alex, Boris, Yu <br> Theme by <a href="https://startbootstrap.com/template-overviews/small-business/">Small Business</a></p>
         </div>
         <!-- /.container -->
     </footer>

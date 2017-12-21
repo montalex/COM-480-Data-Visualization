@@ -19,15 +19,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 -->
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="assets/css/introjs.css" rel="stylesheet">
+
     <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
     <script src="https://d3js.org/topojson.v1.min.js" charset="utf-8"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link href="css/introjs.css" rel="stylesheet">
 
-    <!-- Custom styles from the template -->
-    <link href="css/small-business.css" rel="stylesheet">
+    <!-- Styles from the template -->
+    <link href="assets/css/main.css" rel="stylesheet">
 
 </head>
 
@@ -187,23 +188,25 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src='listBeer.js'></script>
-    <script type='text/javascript' src='listSim.js'></script>
-    <script type="text/javascript" src='drawing.js'>
+    <script type="text/javascript" src='assets/js/listBeer.js'></script>
+    <script type='text/javascript' src='assets/js/listSim.js'></script>
+    <script type="text/javascript" src='assets/js/drawing.js'>
         $(document).ready(drawMap);
         $(document).ready(drawCities);
+
     </script>
-    <script type="text/javascript" src='utils.js'></script>
-    <script type="text/javascript" src='drawChart.js'></script>
-    <script type="text/javascript" src='drawBar.js'></script>
-    <script type="text/javascript" src="intro.js"></script>
-    <script type="text/javascript" src='main.js'></script>
+    <script type="text/javascript" src='assets/js/utils.js'></script>
+    <script type="text/javascript" src='assets/js/drawChart.js'></script>
+    <script type="text/javascript" src='assets/js/drawBar.js'></script>
+    <script type="text/javascript" src="assets/js/intro.js"></script>
+    <script type="text/javascript" src='assets/js/main.js'></script>
 </body>
 
 <script>
     $(document).ready(function() {
         document.getElementById("information").style.display = "none";
     });
+
 </script>
 
 <script>
@@ -212,6 +215,7 @@
         jumbo = document.getElementById("intro");
         jumbo.style.display = "none";
     }
+
 </script>
 
 <script>
@@ -220,6 +224,7 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
+
 </script>
 
 
