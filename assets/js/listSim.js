@@ -1,6 +1,6 @@
 function listSim (beerName) {
 
-    d3.json('Data/beer_cosSim.json', json => {
+    d3.json('data/beer_cosSim.json', json => {
         function tabulate(data, columns) {
             let data2 = [];
             for(let i in data)
