@@ -66,7 +66,7 @@
             <!-- /.col-lg-8 -->
             <div class="col-lg-12">
                 <h1>Project booklet</h1>
-                <p style="text-align:justify;">This process book exlains the development of the Data visualization project done at EPFL in the fall of 2017. It is to be read as a logbook on the advance of the project for each week we worked on it. The project's idea was to realize a visualization using D3 and other recent libraries to get a first taste in web visualisation. We decided to show in an interactive way thousands of beers that were reviewed on <a href="https://www.ratebeer.com">Ratebeer.com</a>.
+                <p style="text-align:justify;">This process book explains the development of the Data visualization project done at EPFL in the fall of 2017. It is to be read as a logbook on the advance of the project for each week we worked on it. The project's idea was to realize a visualization using D3 and other recent libraries to get a first taste in web visualization. We decided to show in an interactive way thousands of beers that were reviewed on <a href="https://www.ratebeer.com">Ratebeer.com</a>.
                 </p>
             </div>
             <!-- /.col-md-4 -->
@@ -79,7 +79,7 @@
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
                 <h2>Week 9</h2>
-                <p style="text-align:justify;">After submitting our proposal, we started thinking of a way to get the data we needed. We decided to scrap the “ratebeer” website in order to get the top 50 beers by country. We could fastly accumulate a total of 4400 beers with their respective features as : type, rating, amount of alcohol and calories. With this we started exploring and analysing the data in order to get a better idea of what we will be able to do. Warning: the data used in this visualization was scraped in early november and might not reflect the actual state of Ratebeer today.
+                <p style="text-align:justify;">After submitting our proposal, we started thinking of a way to get the data we needed. We decided to scrap the “ratebeer” website in order to get the top 50 beers by country. We could quickly accumulate a total of 4400 beers with their respective features as: type, rating, amount of alcohol and calories. With this we started exploring and analying the data in order to get a better idea of what we will be able to do. Warning: the data used in this visualization was scraped in early November and might not reflect the actual state of Ratebeer today.
                 </p>
             </div>
             <!-- /.col-md-4 -->
@@ -88,8 +88,8 @@
         <div class="row my-4">
             <div class="col-lg-8">
                 <h2>Week 10</h2>
-                <p style="text-align:justify;">At the beginning of this week we could get a first working visualisation of a map using D3. Up to there we tried to improve it in order to have a more interactive map changing parameters next to the visualization. We could thus represent a topojson map according to these parameters : “rating score mean”, “alcohol percentage mean” and “calorie mean”. Moreover, we succeed in representing each beer location by a clickable point from which we could get informations about the beer and the country zooming on it (as well as the top five beers). These informations are then displayed next to the map.</p>
-                <p style="text-align:justify;">In parallel, we focused on having a clean and easy to use dataset. Moreover, we tried to find an interesting way to compare the different beers. We thus decided to scrap the comments used to describe each beer containing informations about the taste, the smell, the sight and feel. From there we found relevant to represent these informations under the form of a wheel partitioned in this way and displayed next to the map (when clicking on a beer from the top beer list of the country.) To do that, we agglomerated each comments registered on ratebeer.com for each beer. Using a “countvectorizer” from sklearn, we managed to represent each beer with a vector defined on a “prebuilt” vocabulary used to describe the beers. We got this vocabulary from the website: <a href="https://www.winning-homebrew.com/beer-flavor-descriptors.html">Winning-Homebrew.com</a>. Then our vectorizer, automatically added for each entry (word of our vocabulary) the number of time a given word appeared in the comments of the beer. From this vector we decided to map each word to a more general category (the one from the wheel) in order to display it as on the right figure.</p>
+                <p style="text-align:justify;">At the beginning of this week we could get a first working visualization of a map using D3. Up to there we tried to improve it in order to have a more interactive map changing parameters next to the visualization. We could thus represent a topojson map according to these parameters : “rating score mean”, “alcohol percentage mean” and “calorie mean”. Moreover, we succeed in representing each beer location by a clickable point from which we could get information about the beer and the country zooming on it (as well as the top five beers). These information are then displayed next to the map.</p>
+                <p style="text-align:justify;">In parallel, we focused on having a clean and easy to use dataset. Moreover, we tried to find an interesting way to compare the different beers. We thus decided to scrap the comments used to describe each beer containing information about the taste, the smell, the sight and feel. From there we found relevant to represent these information under the form of a wheel partitioned in this way and displayed next to the map (when clicking on a beer from the top beer list of the country.) To do that, we agglomerated each comments registered on ratebeer.com for each beer. Using a “countvectorizer” from Sklearn, we managed to represent each beer with a vector defined on a “prebuilt” vocabulary used to describe the beers. We got this vocabulary from the website: <a href="https://www.winning-homebrew.com/beer-flavor-descriptors.html">Winning-Homebrew.com</a>. Then our vectorizer, automatically added for each entry (word of our vocabulary) the number of time a given word appeared in the comments of the beer. From this vector we decided to map each word to a more general category (the one from the wheel) in order to display it as on the right figure.</p>
             </div>
             <div class="col-lg-4">
                 <img class="img-fluid rounded" src="assets/img/first_wheel.png" alt="">
@@ -106,7 +106,7 @@
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
                 <h2>Week 11</h2>
-                <p style="text-align:justify;">This week we focused on developping the actual website and integrate every part we had done in the previous steps. To do so we looked online for some kind of template for inspiration and decided to go with one of Boostrap starter template: <a href="https://startbootstrap.com/template-overviews/small-business/">Small Business</a> template.
+                <p style="text-align:justify;">This week we focused on developing the actual website and integrate every part we had done in the previous steps. To do so we looked online for some kind of template for inspiration and decided to go with one of Boostrap starter template: <a href="https://startbootstrap.com/template-overviews/small-business/">Small Business</a> template.
                 </p>
             </div>
             <!-- /.col-md-4 -->
@@ -136,7 +136,7 @@
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
                 <h2>Week 13</h2>
-                <p style="text-align:justify;">In order to give some more informations to the user about each country and the beers they brew, we decided to add a bar chart with most common the types of beer in the selected country.
+                <p style="text-align:justify;">In order to give some more information to the user about each country and the beers they brew, we decided to add a bar chart with most common the types of beer in the selected country.
                 </p>
             </div>
             <!-- /.col-md-4 -->
@@ -146,7 +146,7 @@
             <!-- /.col-lg-8 -->
             <div class="col-lg-6">
                 <h2>Week 14</h2>
-                <p style="text-align:justify;">In the last days of the project we spent most of our time making the website look better and beeing more responsive. We then wrote this process book and added a little turtorial to the visualization for first time users, using the <a href="https://introjs.com/">introJS</a> library.</p>
+                <p style="text-align:justify;">In the last days of the project we spent most of our time making the website look better and being more responsive. We then wrote this process book and added a little tutorial to the visualization for first time users, using the <a href="https://introjs.com/">introJS</a> library.</p>
             </div>
             <div class="col-lg-4">
                 <img class="img-fluid rounded" src="assets/img/tuto-intro.png" alt="">
