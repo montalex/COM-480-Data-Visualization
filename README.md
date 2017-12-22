@@ -16,13 +16,13 @@ We collected the data from [Ratebeer.com](https://ratebeer.com) in early Novembe
 ├── assets                 	% folder with all resources
 │   ├── css               	% css files
 │   ├── img                	% images used in the process book
-│   └── js             		% javascript files 
-├── booklet					% pdf for milestone 2
-├── data					% csv and json for visualization
-├── font-awesome			% font-awesome related files
-├── preprocessing			% juypter notebooks for cleaning data
-├── vendor					% folder with resources from small business template
-├── index.html				% main page
-└── processBook.html		% process book page
+│   └── js             		  % javascript files 
+├── booklet					        % pdf for milestone 2
+├── data					          % csv and json for visualization
+├── font-awesome			      % font-awesome related files
+├── preprocessing			      % juypter notebooks for cleaning data
+├── vendor					        % folder with resources from small business template
+├── index.html				      % main page
+└── processBook.html		    % process book page
 
 ```
