@@ -24,6 +24,7 @@ We collected the data from [Ratebeer.com](https://ratebeer.com) in early Novembe
 ├── vendor                                  % folder with resources from small business template
 ├── index.html                              % main page
 ├── DataVisualization-Intro-video.mov       % presentation video
+├── Project_process_book.pdf                % process book in pdf format
 └── processBook.html                        % process book page
 
 ```
